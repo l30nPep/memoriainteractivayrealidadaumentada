@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Patrimonios Comodorenses</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 130px; 
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a; 
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        .logo-dropdown {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+        }
+
+        .logo-escuela {
+            width: 110px;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-escuela:hover {
+            transform: scale(1.05);
+        }
+
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            overflow: hidden;
+            margin-top: 8px;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #e2e8f0;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .dropdown-content a:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding-left: 25px;
+        }
+
+        .logo-dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row; 
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+            text-align: left;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-logo span {
+            color: #38bdf8;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: block;
+            margin-top: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: capitalize;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .main-header {
+            margin-top: 80px; 
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            background-image: url('https://unsplash.com'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6) 0%, #0f172a 100%);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .main-title {
+            color: #ffffff;
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-title span {
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8 0%, #1b60b5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .map-header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .subtitle-badge {
+            display: inline-block;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 10px 28px;
+            border-radius: 100px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .sub-title {
+            color: #38bdf8; 
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            color: #e2e8f0;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 30px auto 0 auto;
+            line-height: 1.8;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 60px auto 60px auto; 
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 1000px; 
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            background-color: #0f172a;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(56, 189, 248, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .map-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(56, 189, 248, 0.6);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .action-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #1b60b5 0%, #38bdf8 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 16px 36px;
+            border-radius: 100px;
+            box-shadow: 0 10px 20px -5px rgba(27, 96, 181, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(27, 96, 181, 0.6);
+            background: linear-gradient(135deg, #2575dc 0%, #54caff 100%);
+        }
+
+        .museums-section, .avance-section {
+            max-width: 1200px; 
+            margin: 100px auto; 
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .historia-section {
+            max-width: 1100px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .historia-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #38bdf8 0%, #1b60b5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-desc {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 60px; 
+        }
+
+        .museums-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 40px; 
+        }
+
+        .museum-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .museum-card:nth-child(7) {
+            grid-column: 2;
+        }
+
+        .museum-card:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 15px rgba(56, 189, 248, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .museum-card:hover .card-image img {
+            transform: scale(1.08);
+        }
+
+        .card-info {
+            padding: 25px 25px; 
+            text-align: left; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; 
+        }
+
+        .card-info h3 {
+            color: #f8fafc;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px; 
+            transition: color 0.3s ease;
+        }
+
+        .museum-card:hover .card-info h3 {
+            color: #38bdf8;
+        }
+
+        .card-info p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .video-container a:hover img {
+            transform: scale(1.03);
+        }
+
+        .timeline-container {
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 4px;
+            background: linear-gradient(to bottom, #38bdf8, #1b60b5);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            align-self: flex-start;
+            padding-right: 50px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            padding-left: 50px;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 25px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #0f172a;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+
+        .timeline-content {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 30px 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd):hover .timeline-content {
+            transform: translateX(-10px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-item:nth-child(even):hover .timeline-content {
+            transform: translateX(10px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background-color: #38bdf8;
+            transform: scale(1.2);
+        }
+
+        .timeline-content strong {
+            color: #38bdf8;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .timeline-content p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 992px) {
+            .museums-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .museum-card:nth-child(7) {
+                grid-column: 1 / -1; 
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-dropdown {
+                top: 8px;
+                right: 8px;
+            }
+
+            .logo-escuela {
+                width: 85px;
+            }
+
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                position: static;
+                transform: none;
+                gap: 15px; 
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .main-header {
+                margin-top: 100px;
+                height: 100vh;
+            }
+
+            .main-title {
+                font-size: 3rem;
+            }
+
+            .sub-title {
+                font-size: 1rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .container {
+                margin-top: 30px;
+            }
+
+            .map-container {
+                border-radius: 12px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .museums-grid {
+                grid-template-columns: 1fr;
+                gap: 30px; 
+            }
+
+            .museum-card:nth-child(7) {
+                grid-column: 1;
+                width: 100%;
+            }
+
+            .timeline::before {
+                left: 20px;
+                transform: none;
+            }
+
+            .timeline-item {
+                width: 100%;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                align-self: center;
+                padding-left: 55px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 8px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(odd):hover .timeline-content,
+            .timeline-item:nth-child(even):hover .timeline-content {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-dropdown">
+        <img src="9.jpeg" alt="Logo" class="logo-escuela">
+        <div class="dropdown-content">
+            <a href="https://share.google/4hp2YIDyxMsHr3Ogs" target="_blank">Instagram</a>
+            <a href="https://share.google/si89XB157tcIj2iFW" target="_blank">Facebook</a>
+            <a href="https://chubut.edu.ar/escuela-796/" target="_blank">Ministerio de Educación</a>
+        </div>
+    </div>
+    
+    <nav class="navbar">
+        <a href="#inicio" class="nav-logo">
+            MEMORIA INTERACTIVA<span>Y REALIDAD AUMENTADA</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#mapa">Mapa Interactivo</a></li>
+            <li><a href="#museos">Lugares historicos</a></li>
+            <li><a href="#avance">Nuestro Avance</a></li>
+            <li><a href="#historia">¿Por Qué Empezó?</a></li>
+        </ul>
+    </nav>
+
+    <header id="inicio" class="main-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1 class="main-title">Memoria Interactiva <br><span>y Realidad Aumentada</span></h1>
+          
+            <p class="intro-text">Buenas, somos estudiantes capacitados en informática y Ofimática de la Escuela 796 Antonio Berni, y venimos a presentar nuestra página web sobre los patrimonios de Comodoro Rivadavia.</p>
+        </div>
+    </header>
+
+    <main id="mapa" class="container">
+        <div class="map-header">
+            <div class="subtitle-badge">
+                <h2 class="sub-title">Mapa de los Patrimonios</h2>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://view.genially.com/6a0644385d92f93d4080ff08" 
+                    allowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    mozallowfullscreen="true">
+            </iframe>
+        </div>
+
+        <div class="action-container">
+            <a href="https://canva.link/aqfh4a0ut4ziq83" target="_blank" class="btn-primary">
+                Ver Presentación en Canva
+            </a>
+        </div>
+    </main>
+
+    <section id="museos" class="museums-section">
+        <h2 class="section-title">Nuestros <span>Patrimonios</span></h2>
+        <p class="section-desc">Seleccioná una imagen para descubrir la historia de cada lugar.</p>
+
+        <div class="museums-grid">
+            <a href="https://comodoroturismo.gob.ar/lista/faro-san-jorge/" target="_blank" rel="noopener noreferrer" class="museum-card">
+                <div class="card-image">
+                    <img src="10.jpeg" alt="Faro San Jorge">
+                </div>
+                <div class="card-info">
+                    <h3>Faro San Jorge</h3>
+                    <p>Histórico faro de ladrillo a la vista inaugurado en 1925, un emblema indiscutido de la costa patagónica.</p>
+                </div>
+            </a>
+
+            <a href="https://comodoroturismo.gob.ar/lista/cerro-chenque/" target="_blank" rel="noopener noreferrer" class="museum-card">
+                <div class="card-image">
+                    <img src="4.jpeg" alt="Cerro Chenque">
+                </div>
+                <div class="card-info">
+                    <h3>Cerro Chenque</h3>
+                    <p>El imponente cerro que domina el paisaje de Comodoro Rivadavia, ofreciendo las mejores vistas panorámicas.</p>
+                </div>
+            </a>
+
+            <a href="https://mapainteractivocultural.ar/places/detail/ffdceb16-f371-4884-8d27-9adcd0a252a0" target="_blank" rel="noopener noreferrer" class="museum-card">
+                <div class="card-image">
+                    <img src="5.jpeg" alt="Cine Teatro Astra">
+                </div>
+                <div class="card-info">
+                    <h3>Cine Teatro Astra</h3>
+                    <p>Patrimonio cultural recuperado que mantiene viva la época dorada y la vida social del histórico barrio Astra.</p>
+                </div>
+            </a>
+
+            <a href="https://comodoroturismo.gob.ar/lista/museo-nacional-del-petroleo/" target="_blank" rel="noopener noreferrer" class="museum-card">
+                <div class="card-image">
+                    <img src="2.jpeg" alt="Museo del Petróleo">
+                </div>
+                <div class="card-info">
+                    <h3>Museo Nacional del Petróleo</h3>
+                    <p>Construido en torno al histórico Pozo N° 2, es uno de los museos de sitio más importantes del mundo sobre la industria.</p>
+                </div>
+            </a>
+
+            <a href="https://cultura.vivamoscomodoro.gob.ar/index.php/museo-regional-patagonico-prof-antonio-garces" target="_blank" rel="noopener noreferrer" class="museum-card">
+                <div class="card-image">
+                    <img src="8.jpeg" alt="Museo Regional Patagónico">
+                </div>
+                <div class="card-info">
+                    <h3>Museo Regional Patagónico</h3>
+                    <p>Conserva y exhibe valiosas colecciones de paleontología, arqueología y ciencias naturales de la región.</p>
+                </div>
+            </a>
+
+            <a href="https://comodoroturismo.gob.ar/lista/cine-teatro-espanol/" target="_blank" rel="noopener noreferrer" class="museum-card">
+                <div class="card-image">
+                    <img src="6.jpeg" alt="Cine Teatro Español">
+                </div>
+                <div class="card-info">
+                    <h3>Cine Teatro Español</h3>
+                    <p>Majestuoso edificio y epicentro cultural, famoso por su imponente arquitectura clásica en el centro de la ciudad.</p>
+                </div>
+            </a>
+
+            <a href="https://cultura.vivamoscomodoro.gob.ar/index.php/museo-ferroportuario" target="_blank" rel="noopener noreferrer" class="museum-card">
+                <div class="card-image">
+                    <img src="11.jpeg" alt="Museo Ferroportuario">
+                </div>
+                <div class="card-info">
+                    <h3>Museo Ferroportuario</h3>
+                    <p>Ubicado en la ex estación de trenes, narra la histórica conexión entre el ferrocarril y el puerto de Comodoro.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="avance" class="avance-section">
+        <h2 class="section-title">Nuestro <span>Avance</span></h2>
+        <p class="section-desc"> el video sobre nuestro proyecto y su avance.</p>
+
+        <div class="video-container">
+            <a href="https://youtu.be/yGBRzkWV8xI" target="_blank" rel="noopener noreferrer">
+                <img src="13.png" alt="Ver video del proyecto en YouTube">
+            </a>
+        </div>
+    </section>
+
+    <section id="historia" class="historia-section">
+        <div class="historia-header">
+            <h2 class="section-title">¿Por qué <span>Empezó?</span></h2>
+            <p class="section-desc">Bitácora de trabajo de nuestro proyecto para la Feria de Ciencias.</p>
+        </div>
+        
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>20 de abril de 2026 (Lautaro Sánchez)</strong>
+                        <p>Se presentó un proyecto grupal en Ofimática y Recursos Multimediales sobre la historia e importancia de los patrimonios de Comodoro Rivadavia. Se dividieron en grupos de tres para repasar información, planear materiales para la maqueta y crear un documento en Word con texto e imágenes.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>21 y 22 de abril de 2026 (Maite González Couchet / Grupo 2 - Lautaro Sánchez)</strong>
+                        <p>Se avanzó con el trabajo práctico de Ciencias buscando imágenes y videos, redactando información, creando el guion para el video de la Muestra de Ciencias y haciendo un resumen teórico. El 22 de abril, divididos en dos subgrupos con Constanza Hernández y Lara Oviedo, trabajaron en Hoja de Cálculo y en el video.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>23 de abril de 2026 (Santiago Monsalvo)</strong>
+                        <p>Junto a Guillermina Llesona, trabajaron en Ofimática haciendo un flyer sobre el Faro San Jorge y crearon una carpeta en Google Drive para compartir información y verificarla antes de la Feria de Ciencias del 6 de mayo.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>28 de abril de 2026 (Lautaro Sánchez)</strong>
+                        <p>Redactaron un texto con sus ideas previas sobre el Barrio Mosconi y los temas históricos vistos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>2 de mayo de 2026 (Santiago Castro)</strong>
+                        <p>Investigó los colores del Museo Regional Patagónico y del Museo Ferroportuario para pintar correctamente los modelos 3D y envió imágenes para crear modelos en realidad aumentada.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>6 de mayo de 2026 (Matías Villalba - Grupo 6)</strong>
+                        <p>En Ofimática, junto a Lionel Masilla y Darian Vallejos, elaboraron un documento de Google sobre el Museo Nacional del Petróleo con texto, imágenes y video, además de un video en Canva.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>21 de mayo de 2026 (Lautaro Sánchez)</strong>
+                        <p>Corrigieron la unión del proyecto, agregaron más información sobre patrimonios y dialogaron sobre los próximos pasos con realidad aumentada e impresión 3D.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>28 de mayo de 2026 (Maite González Couchet y Lara Oviedo)</strong>
+                        <p>Se grabaron audios con un micrófono profesional de la escuela, se redactaron e incluyeron subtítulos, y se utilizó la aplicación Audacity para editar el sonido e integrarlo al video final. Además, investigaron sobre programas de impresión 3D como Meshy 3D (para modelar el Faro San Jorge, Museo Ferroportuario, Museo del Petróleo y chalet Hupat), iniciaron la impresión del Faro San Jorge y buscaron datos sobre realidad aumentada.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>1 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Elaboraron modelos 3D en una impresora Creality KE (imprimiendo el Faro San Jorge) y probaron herramientas de realidad aumentada.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>2 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Solucionaron fallas previas de realidad aumentada, investigaron nuevos errores técnicos e intentaron imprimir otro patrimonio en 3D, pero la impresión falló al no adherirse la pieza a la placa.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>03 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Identificaron la falla en la impresión 3D y en la realidad aumentada. Por falta de tiempo, solo alcanzaron a solucionar lo de la impresora 3D.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>04 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Revisaron el problema de realidad aumentada, pero en la impresora salieron piezas mal hechas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>08 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Encontraron el problema de la impresora 3D y empezaron a solucionarlo. También comenzaron a reparar lo de realidad aumentada y a arreglar algunos audios.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>10 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Estuvo reparando la impresora 3D porque las piezas se imprimían en el aire debido a un fallo de calibración. En realidad aumentada tuvieron que cambiar y probar otra aplicación.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>11 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Estuvieron imprimiendo el Museo Ferroportuario. Después de tres intentos no lograron imprimirlo, aunque sí mejoraron la realidad aumentada. Señala que les falta armar el Cerro para terminar el modelaje 3D.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>12 y 13 de junio de 2026</strong>
+                        <p>Estuvieron trabajando en la impresión de un patrimonio, pero la impresora se trabó y se rompió, por lo que no pudieron terminar el trabajo en esa jornada.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>12 de junio de 2026 (Santiago Castro)</strong>
+                        <p>Editó junto a Lautaro Sánchez un juego interactivo para el video solicitado por los profesores.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>16 de junio de 2026 (Santiago Castro)</strong>
+                        <p>Comenzó a utilizar la aplicación CamScanner para convertir la libreta/bitácora a formato PDF para presentarla en la instancia regional de la Feria de Ciencias. Junto a Matías Villalba rehicieron las grabaciones y corrigieron el guion. Al tener inconvenientes con el micrófono profesional, usaron el micrófono de la laptop del Gobierno y editaron el audio con una aplicación de paga.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>16 de junio de 2026 (Lautaro Sánchez)</strong>
+                        <p>Mientras se grababan los audios, Lautaro Sánchez y el profesor Leo averiguaron y arreglaron el problema de la impresora 3D conocido como "el bloque de la muerte".</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <strong>29 de junio de 2026 (Lara Oviedo)</strong>
+                        <p>Estuvieron proyectando y realizando el proyecto para la Feria de Ciencias hasta darlo por terminado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
