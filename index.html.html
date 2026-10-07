@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrimonios Culturales de Comodoro Rivadavia | Escuela N° 796 Antonio Berni</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        patagonia: {
+                            50: '#f4f8fa',
+                            100: '#e5eff4',
+                            500: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        petroleo: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        chenque: {
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#78350f',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+    <!-- Three.js CDN for 3D Map Visualizer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Custom CSS Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f17;
+            color: #cbd5e1;
+        }
+
+        /* Dark Glassmorphism effects */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-dark {
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Dark Book page texture effect for Carpeta de Campo */
+        .book-page {
+            background-color: #131822;
+            background-image: radial-gradient(#252e3e 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+            box-shadow: inset 20px 0 30px -15px rgba(0,0,0,0.5);
+        }
+
+        /* Pulse ring for AI Assistant */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.5); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(2, 132, 199, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(2, 132, 199, 0); }
+        }
+
+        .ai-pulse {
+            animation: pulse-ring 3s infinite;
+        }
+
+        /* Book Button Animation */
+        .btn-book {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .btn-book:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-patagonia-700 selection:text-white bg-slate-950 text-slate-300">
+
+    <!-- Header with School Logo -->
+    <header class="sticky top-0 z-40 w-full glass-card border-b border-slate-800/80 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo Escuela 796 Antonio Berni in Top Corner -->
+            <div class="flex items-center space-x-3">
+                <div class="relative group cursor-pointer" tabindex="0">
+                    <div class="w-13 h-13 rounded-full bg-slate-900 p-0.5 shadow-md flex items-center justify-center transition-transform group-hover:scale-105 border border-amber-500/40">
+                        <!-- Official Emblem Logo for Escuela 796 Antonio Berni -->
+                        <svg class="w-12 h-12" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer White Circle with Black Border -->
+                            <circle cx="100" cy="100" r="97" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+                            
+                            <!-- Sun Rays Background -->
+                            <g fill="#E38924">
+                                <polygon points="100,100 75,20 86,18"/>
+                                <polygon points="100,100 93,16 107,16"/>
+                                <polygon points="100,100 114,18 125,20"/>
+                                <polygon points="100,100 133,26 143,31"/>
+                                <polygon points="100,100 151,39 160,46"/>
+                                <polygon points="100,100 167,55 174,64"/>
+                                <polygon points="100,100 179,74 183,85"/>
+                                <polygon points="100,100 184,95 184,106"/>
+                                <polygon points="100,100 67,26 57,31"/>
+                                <polygon points="100,100 49,39 40,46"/>
+                                <polygon points="100,100 33,55 26,64"/>
+                                <polygon points="100,100 21,74 17,85"/>
+                                <polygon points="100,100 16,95 16,106"/>
+                            </g>
+
+                            <!-- Inner Rounded Rectangular Frame -->
+                            <rect x="48" y="52" width="104" height="116" rx="22" fill="#20110A" stroke="#000000" stroke-width="2.5"/>
+                            <path d="M 49 110 C 70 100, 130 100, 151 110 L 151 166 Q 151 168 148 168 L 52 168 Q 49 168 49 166 Z" fill="#712816"/>
+                            
+                            <!-- Juanito Laguna Body & Shirt -->
+                            <path d="M 115 125 C 122 132, 140 148, 148 168 L 118 168 C 110 152, 110 138, 115 125 Z" fill="#ECA92B" stroke="#000000" stroke-width="1.5"/>
+                            <path d="M 120 118 L 128 135 L 118 138 Z" fill="#C67756"/>
+                            
+                            <!-- Face & Features -->
+                            <path d="M 85 62 Q 135 60 142 105 Q 140 135 110 135 Q 75 130 85 62 Z" fill="#D28362" stroke="#000000" stroke-width="2"/>
+                            <ellipse cx="102" cy="94" rx="6" ry="4" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+                            <circle cx="102" cy="94" r="2.5" fill="#3D2012"/>
+                            <ellipse cx="126" cy="92" rx="6" ry="4" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+                            <circle cx="126" cy="92" r="2.5" fill="#3D2012"/>
+                            <path d="M 110 98 Q 114 108 108 112" stroke="#68341D" stroke-width="1.5" fill="none"/>
+                            <path d="M 110 118 Q 118 120 122 117" stroke="#000000" stroke-width="1.5" fill="none"/>
+                            
+                            <!-- Red Beret -->
+                            <path d="M 80 88 C 70 70, 85 52, 115 52 C 140 52, 155 70, 142 85 C 130 88, 90 92, 80 88 Z" fill="#BA3220" stroke="#000000" stroke-width="2"/>
+                            <path d="M 80 88 Q 105 78 142 85 Q 115 95 80 88 Z" fill="#8E2315"/>
+                            
+                            <!-- Earth Globe in Hands -->
+                            <circle cx="92" cy="138" r="26" fill="#1B61D1" stroke="#000000" stroke-width="2"/>
+                            <path d="M 78 125 Q 90 120 95 130 Q 88 142 74 140 Z" fill="#3AA843"/>
+                            <path d="M 94 135 Q 108 128 112 142 Q 100 158 88 152 Q 88 142 94 135 Z" fill="#3AA843"/>
+                            
+                            <!-- Hands -->
+                            <path d="M 64 130 C 52 140, 58 160, 78 162 C 85 162, 90 150, 82 140 C 72 135, 66 128, 64 130 Z" fill="#C67756" stroke="#000000" stroke-width="1.5"/>
+                            <path d="M 102 140 C 112 145, 118 160, 102 165 C 92 165, 88 150, 96 142 Z" fill="#C67756" stroke="#000000" stroke-width="1.5"/>
+
+                            <!-- Inner Frame Border Overlay -->
+                            <rect x="48" y="52" width="104" height="116" rx="22" fill="none" stroke="#000000" stroke-width="2.5"/>
+
+                            <!-- Text Paths for Circular Border Text -->
+                            <path id="topTextPath" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+                            <path id="bottomTextPath" d="M 178,100 A 78,78 0 0,1 22,100" fill="none"/>
+                            <text font-family="'Inter', sans-serif" font-weight="800" font-size="11.5" fill="#000000">
+                                <textPath href="#topTextPath" startOffset="50%" text-anchor="middle">Escuela N•796 "Antonio Berni"</textPath>
+                            </text>
+                            <text font-family="'Inter', sans-serif" font-weight="700" font-size="10.5" fill="#000000">
+                                <textPath href="#bottomTextPath" startOffset="50%" text-anchor="middle">Comodoro Rivadavia - Chubut</textPath>
+                            </text>
+                        </svg>
+                    </div>
+
+                    <!-- Social Media Hover / Click Popover Menu -->
+                    <div class="absolute top-full left-0 mt-2 w-56 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl shadow-2xl p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-200 z-50 transform origin-top-left group-hover:translate-y-0 translate-y-1">
+                        <div class="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 px-2.5 py-1 border-b border-slate-800 mb-1 flex items-center justify-between">
+                            <span>Sitios y Redes Oficiales</span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        </div>
+                        
+                        <!-- Sitio Web Oficial Button -->
+                        <a href="https://esc796-chubut.edu.ar" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2.5 p-2 rounded-xl hover:bg-sky-900/40 text-slate-200 hover:text-white transition">
+                            <div class="w-7 h-7 rounded-lg bg-sky-600 flex items-center justify-center shrink-0 shadow-sm">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                </svg>
+                            </div>
+                            <div class="text-xs">
+                                <div class="font-bold text-sky-300">Sitio Web Oficial</div>
+                                <div class="text-[10px] text-slate-400">esc796-chubut.edu.ar</div>
+                            </div>
+                        </a>
+
+                        <!-- Instagram Button -->
+                        <a href="https://www.instagram.com/escuela796/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2.5 p-2 rounded-xl hover:bg-gradient-to-r hover:from-purple-900/50 hover:to-pink-900/50 text-slate-200 hover:text-white transition">
+                            <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center shrink-0 shadow-sm">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </div>
+                            <div class="text-xs">
+                                <div class="font-bold text-pink-300">Instagram</div>
+                                <div class="text-[10px] text-slate-400">@escuela796</div>
+                            </div>
+                        </a>
+
+                        <!-- Facebook Button -->
+                        <a href="https://www.facebook.com/Escuela796/posts/1676485381150538/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2.5 p-2 rounded-xl hover:bg-blue-900/40 text-slate-200 hover:text-white transition">
+                            <div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center shrink-0 shadow-sm">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </div>
+                            <div class="text-xs">
+                                <div class="font-bold text-blue-300">Facebook</div>
+                                <div class="text-[10px] text-slate-400">Escuela N° 796</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="inline-block text-xs font-bold tracking-wider text-sky-400 uppercase bg-slate-800/90 px-2 py-0.5 rounded-full border border-sky-900/50">Escuela N° 796</span>
+                    <h1 class="text-lg sm:text-xl font-extrabold text-slate-100 leading-tight">
+                        "Antonio Berni"
+                    </h1>
+                    <p class="text-xs text-slate-400 hidden sm:block">Comodoro Rivadavia &bull; Proyecto Patrimonial</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links & Book Button -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <nav class="hidden md:flex space-x-6 text-sm font-semibold text-slate-300">
+                    <a href="#patrimonios" class="hover:text-sky-400 transition">Patrimonios</a>
+                    <a href="#mapa" class="hover:text-sky-400 transition">Mapa Interactivo</a>
+                    <a href="#oficiales" class="hover:text-sky-400 transition">Sitios Oficiales</a>
+                    <a href="#proyecto" class="hover:text-sky-400 transition">Sobre el Proyecto</a>
+                </nav>
+
+                <!-- Carpeta de Campo Button in Shape of a Book -->
+                <button id="openBookBtn" onclick="toggleBookModal()" class="btn-book flex items-center space-x-2 bg-gradient-to-r from-amber-900/90 via-amber-800 to-chenque-700 text-amber-100 px-4 py-2.5 rounded-xl shadow-lg shadow-amber-950/40 hover:shadow-amber-900/40 font-medium text-sm border border-amber-600/30">
+                    <!-- Simple Book Icon Badge -->
+                    <div class="bg-amber-950/60 p-1.5 rounded-lg border border-amber-500/30 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div class="text-left leading-tight hidden xs:block">
+                        <div class="text-[10px] uppercase font-bold tracking-wider text-amber-300">Ver Progresos</div>
+                        <div class="font-bold text-xs text-amber-100">Carpeta de Campo</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white py-16 sm:py-24 overflow-hidden border-b border-slate-800/60">
+            <!-- Background Decorative Grid -->
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:20px_20px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center space-x-2 bg-slate-900/90 backdrop-blur border border-sky-500/30 px-3.5 py-1.5 rounded-full text-xs font-medium text-sky-300 mb-6 shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Investigación Escolar Activa 2026 &bull; Comodoro Rivadavia</span>
+                </div>
+
+                <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-100 max-w-4xl mx-auto leading-tight">
+                    Nuestros Patrimonios Culturales e Históricos
+                </h2>
+                
+                <p class="mt-4 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                    Página web informativa elaborada por los estudiantes de la <strong class="text-amber-400 font-semibold">Escuela N° 796 "Antonio Berni"</strong> con la información oficial de la Municipalidad de Comodoro Rivadavia y nuestra carpeta de avances de campo.
+                </p>
+
+                <!-- Quick Stats / Highlights -->
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur shadow-sm">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-sky-400">5</div>
+                        <div class="text-xs text-slate-400 font-medium">Sitios Emblemáticos</div>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur shadow-sm">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">100+</div>
+                        <div class="text-xs text-slate-400 font-medium">Años de Historia Local</div>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur shadow-sm">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</div>
+                        <div class="text-xs text-slate-400 font-medium">Datos Oficiales</div>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur shadow-sm">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-teal-400">IA</div>
+                        <div class="text-xs text-slate-400 font-medium">Asistente Interactivo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Cultural Heritage Section -->
+        <section id="patrimonios" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-400 bg-slate-900 px-3 py-1 rounded-full border border-sky-900/60">Guía Oficial de la Ciudad</span>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-100 mt-2">Los 5 Patrimonios Elegidos</h3>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md mt-2 md:mt-0">
+                    Haz clic en cada tarjeta para explorar su reseña oficial, ubicación, horarios y registros fotográficos de nuestro proyecto escolar.
+                </p>
+            </div>
+
+            <!-- Heritage Cards Grid -->
+            <div id="heritageGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript will inject heritage cards dynamically -->
+            </div>
+        </section>
+
+        <!-- Interactive Map Section (2D Genially & 3D Interactive Explorer) -->
+        <section id="mapa" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400 bg-slate-900 px-3 py-1 rounded-full border border-amber-900/60">Cartografía Escolar</span>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-100 mt-2">Mapa Interactivo 2D y 3D</h3>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md mt-2 md:mt-0">
+                    Explora la ubicación geográfica de los 5 patrimonios históricos en el mapa 2D interactivo o navega la vista tridimensional del relieve costero de Comodoro Rivadavia.
+                </p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex items-center space-x-3 mb-6 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 w-fit">
+                <button id="tab2dBtn" onclick="switchMapTab('2d')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 bg-sky-600 text-white shadow-md">
+                    <span>🗺️ Mapa 2D (Genially)</span>
+                </button>
+                <button id="tab3dBtn" onclick="switchMapTab('3d')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 text-slate-400 hover:text-white hover:bg-slate-800">
+                    <span>🌐 Mapa 3D Interactivo</span>
+                </button>
+            </div>
+
+            <!-- 2D Genially Map Container -->
+            <div id="map2dContainer" class="relative w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl h-[550px] sm:h-[650px]">
+                <iframe 
+                    src="https://view.genially.com/6a0644385d92f93d4080ff08" 
+                    title="Mapa Interactivo 2D - Patrimonios Comodoro Rivadavia" 
+                    class="w-full h-full border-0 rounded-2xl"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <!-- 3D Interactive Terrain Canvas Container -->
+            <div id="map3dContainer" class="hidden relative w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl h-[550px] sm:h-[650px]">
+                <canvas id="threeMapCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+                
+                <!-- 3D Map Overlay Controls & Legend -->
+                <div class="absolute top-4 left-4 z-10 bg-slate-900/90 backdrop-blur-md p-3.5 rounded-2xl border border-slate-800 text-xs max-w-xs shadow-xl">
+                    <div class="font-bold text-sky-400 flex items-center space-x-1.5 mb-1">
+                        <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+                        <span>Comodoro Rivadavia 3D</span>
+                    </div>
+                    <p class="text-slate-300 text-[11px] leading-tight">
+                        Arrastra con el mouse/dedo para rotar el terreno 3D. Usa la rueda para hacer zoom. Haz clic en los pines luminosos para ver la ficha del patrimonio.
+                    </p>
+                </div>
+
+                <!-- Active 3D Pin Popup Info Box -->
+                <div id="map3dPopup" class="hidden absolute bottom-6 left-6 right-6 sm:left-auto sm:right-6 sm:w-80 z-10 bg-slate-900/95 backdrop-blur-md p-4 rounded-2xl border border-sky-500/40 shadow-2xl text-xs text-slate-200">
+                    <div class="flex items-start justify-between">
+                        <span id="popup3dCategory" class="text-[10px] uppercase font-bold text-sky-400 bg-sky-950 px-2 py-0.5 rounded-full border border-sky-800"></span>
+                        <button onclick="close3dPopup()" class="text-slate-400 hover:text-white text-base leading-none">&times;</button>
+                    </div>
+                    <h5 id="popup3dTitle" class="font-bold text-sm text-slate-100 mt-2"></h5>
+                    <p id="popup3dDesc" class="text-slate-300 text-[11px] mt-1 line-clamp-3"></p>
+                    <button id="popup3dBtn" class="mt-3 w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-1.5 rounded-xl text-xs transition">
+                        Ver Detalles Completos
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Official Links Directory Section -->
+        <section id="oficiales" class="py-16 bg-slate-900/60 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-slate-900 px-3 py-1 rounded-full border border-emerald-900/60">Fuentes Verificadas</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mt-2">Páginas Web Oficiales de Cada Patrimonio</h3>
+                    <p class="text-slate-400 text-sm mt-2">
+                        Accede de forma directa a las páginas institucionales del Ente Comodoro Turismo y la Secretaría de Cultura de la Municipalidad de Comodoro Rivadavia.
+                    </p>
+                </div>
+
+                <div id="officialWebLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Links populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- School Project Info Section -->
+        <section id="proyecto" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 relative overflow-hidden">
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-2">
+                        <span class="text-xs font-bold tracking-widest uppercase text-amber-400 bg-amber-950/80 border border-amber-500/30 px-3 py-1 rounded-full">
+                            Escuela Secundaria N° 796 "Antonio Berni"
+                        </span>
+                        <h3 class="text-2xl sm:text-4xl font-extrabold mt-4 leading-snug text-slate-100">
+                            Investigación, Identidad y Valoración Histórica
+                        </h3>
+                        <p class="mt-4 text-slate-400 leading-relaxed text-sm sm:text-base">
+                            Este sitio integra la recopilación bibliográfica oficial municipal junto con nuestra propia <strong class="text-amber-300">Carpeta de Campo digital</strong>, documentando las visitas de observación, entrevistas, recolección fotográfica y propuestas de preservación ambiental y cultural.
+                        </p>
+                        
+                        <div class="mt-8 flex flex-wrap items-center gap-4">
+                            <button onclick="toggleBookModal()" class="bg-amber-600 hover:bg-amber-700 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg transition flex items-center space-x-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                <span>Abrir Carpeta de Campo</span>
+                            </button>
+                            <a href="#patrimonios" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium px-6 py-3 rounded-xl transition">
+                                Explorar Patrimonios
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Badge Card -->
+                    <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 border border-slate-800 text-center">
+                        <div class="w-24 h-24 mx-auto bg-white rounded-full p-1 border border-slate-700 shadow-xl flex items-center justify-center mb-4">
+                            <!-- Official Emblem Logo SVG -->
+                            <svg class="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="100" r="97" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+                                <g fill="#E38924">
+                                    <polygon points="100,100 75,20 86,18"/>
+                                    <polygon points="100,100 93,16 107,16"/>
+                                    <polygon points="100,100 114,18 125,20"/>
+                                    <polygon points="100,100 133,26 143,31"/>
+                                    <polygon points="100,100 151,39 160,46"/>
+                                    <polygon points="100,100 167,55 174,64"/>
+                                    <polygon points="100,100 179,74 183,85"/>
+                                    <polygon points="100,100 184,95 184,106"/>
+                                    <polygon points="100,100 67,26 57,31"/>
+                                    <polygon points="100,100 49,39 40,46"/>
+                                    <polygon points="100,100 33,55 26,64"/>
+                                    <polygon points="100,100 21,74 17,85"/>
+                                    <polygon points="100,100 16,95 16,106"/>
+                                </g>
+                                <rect x="48" y="52" width="104" height="116" rx="22" fill="#20110A" stroke="#000000" stroke-width="2.5"/>
+                                <path d="M 49 110 C 70 100, 130 100, 151 110 L 151 166 Q 151 168 148 168 L 52 168 Q 49 168 49 166 Z" fill="#712816"/>
+                                <path d="M 115 125 C 122 132, 140 148, 148 168 L 118 168 C 110 152, 110 138, 115 125 Z" fill="#ECA92B" stroke="#000000" stroke-width="1.5"/>
+                                <path d="M 120 118 L 128 135 L 118 138 Z" fill="#C67756"/>
+                                <path d="M 85 62 Q 135 60 142 105 Q 140 135 110 135 Q 75 130 85 62 Z" fill="#D28362" stroke="#000000" stroke-width="2"/>
+                                <ellipse cx="102" cy="94" rx="6" ry="4" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+                                <circle cx="102" cy="94" r="2.5" fill="#3D2012"/>
+                                <ellipse cx="126" cy="92" rx="6" ry="4" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+                                <circle cx="126" cy="92" r="2.5" fill="#3D2012"/>
+                                <path d="M 110 98 Q 114 108 108 112" stroke="#68341D" stroke-width="1.5" fill="none"/>
+                                <path d="M 110 118 Q 118 120 122 117" stroke="#000000" stroke-width="1.5" fill="none"/>
+                                <path d="M 80 88 C 70 70, 85 52, 115 52 C 140 52, 155 70, 142 85 C 130 88, 90 92, 80 88 Z" fill="#BA3220" stroke="#000000" stroke-width="2"/>
+                                <path d="M 80 88 Q 105 78 142 85 Q 115 95 80 88 Z" fill="#8E2315"/>
+                                <circle cx="92" cy="138" r="26" fill="#1B61D1" stroke="#000000" stroke-width="2"/>
+                                <path d="M 78 125 Q 90 120 95 130 Q 88 142 74 140 Z" fill="#3AA843"/>
+                                <path d="M 94 135 Q 108 128 112 142 Q 100 158 88 152 Q 88 142 94 135 Z" fill="#3AA843"/>
+                                <path d="M 64 130 C 52 140, 58 160, 78 162 C 85 162, 90 150, 82 140 C 72 135, 66 128, 64 130 Z" fill="#C67756" stroke="#000000" stroke-width="1.5"/>
+                                <path d="M 102 140 C 112 145, 118 160, 102 165 C 92 165, 88 150, 96 142 Z" fill="#C67756" stroke="#000000" stroke-width="1.5"/>
+                                <rect x="48" y="52" width="104" height="116" rx="22" fill="none" stroke="#000000" stroke-width="2.5"/>
+                                <path id="badgeTopTextPath" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+                                <path id="badgeBottomTextPath" d="M 178,100 A 78,78 0 0,1 22,100" fill="none"/>
+                                <text font-family="'Inter', sans-serif" font-weight="800" font-size="11.5" fill="#000000">
+                                    <textPath href="#badgeTopTextPath" startOffset="50%" text-anchor="middle">Escuela N•796 "Antonio Berni"</textPath>
+                                </text>
+                                <text font-family="'Inter', sans-serif" font-weight="700" font-size="10.5" fill="#000000">
+                                    <textPath href="#badgeBottomTextPath" startOffset="50%" text-anchor="middle">Comodoro Rivadavia - Chubut</textPath>
+                                </text>
+                            </svg>
+                        </div>
+                        <h4 class="font-bold text-lg text-slate-100">E.P. N° 796 "Antonio Berni"</h4>
+                        <p class="text-xs text-slate-400 mt-1">Comodoro Rivadavia, Chubut</p>
+                        <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400">
+                            "Preservando el patrimonio natural y cultural patagónico a través de la educación."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 text-xs py-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <span class="font-bold text-slate-300">Escuela N° 796 Antonio Berni</span>
+                <span>&bull;</span>
+                <span>Comodoro Rivadavia</span>
+            </div>
+            <div>
+                Información extraída de <a href="https://comodoroturismo.gob.ar" target="_blank" class="text-sky-400 hover:underline">comodoroturismo.gob.ar</a> y archivos escolares.
+            </div>
+        </div>
+    </footer>
+
+    <!-- CARPETA DE CAMPO MODAL (Simple Dark Book View) -->
+    <div id="bookModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-3 sm:p-6 overflow-y-auto">
+        <div class="relative w-full max-w-5xl bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden flex flex-col max-h-[92vh]">
+            
+            <!-- Modal Header (Dark Book Cover Style Bar) -->
+            <div class="bg-gradient-to-r from-amber-950 via-slate-900 to-amber-950 text-amber-100 px-6 py-4 flex items-center justify-between border-b border-amber-900/40 shadow-md">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-amber-900/40 p-2 rounded-lg text-amber-300 border border-amber-700/40">
+                        <!-- Book Icon -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg sm:text-xl text-amber-100 tracking-wide font-serif">Carpeta de Campo Digital</h3>
+                        <p class="text-xs text-amber-400/80">Progresos e Investigación de Alumnos - Escuela 796 "Antonio Berni"</p>
+                    </div>
+                </div>
+                
+                <button onclick="toggleBookModal()" class="text-amber-400 hover:text-white bg-slate-950/80 hover:bg-amber-900/60 rounded-full p-2 transition border border-amber-800/30">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Book Body (Two Page Notebook Layout - Dark) -->
+            <div class="flex-grow overflow-y-auto p-4 sm:p-8 book-page grid grid-cols-1 lg:grid-cols-12 gap-8 text-slate-300">
+                
+                <!-- Left Column: Field Logs & Entries -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h4 class="font-bold text-slate-100 text-lg font-serif flex items-center space-x-2">
+                            <span>📜 Bitácora de Avances de Investigación</span>
+                        </h4>
+                        <span id="logCounterBadge" class="text-xs bg-amber-950 text-amber-300 border border-amber-800/60 font-bold px-2.5 py-0.5 rounded-full">3 Entradas</span>
+                    </div>
+
+                    <!-- Entries List -->
+                    <div id="fieldLogsContainer" class="space-y-4">
+                        <!-- Dynamic Field Logs -->
+                    </div>
+
+                    <!-- Form to add a new progress log -->
+                    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 shadow-sm mt-6">
+                        <h5 class="font-bold text-xs uppercase tracking-wider text-amber-400 mb-3 flex items-center space-x-1">
+                            <span>✍️ Añadir Nuevo Progreso a la Carpeta</span>
+                        </h5>
+                        <form id="addLogForm" onsubmit="handleAddLog(event)" class="space-y-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Patrimonio Relacionado</label>
+                                    <select id="logPatrimonioSelect" class="w-full text-xs p-2.5 rounded-lg border border-slate-700 bg-slate-950 text-slate-200 focus:ring-2 focus:ring-amber-500">
+                                        <option value="Museo Regional Patagónico">Museo Regional Patagónico</option>
+                                        <option value="Faro San Jorge">Faro San Jorge</option>
+                                        <option value="Cerro Chenque">Cerro Chenque</option>
+                                        <option value="Complejo Ferroportuario">Complejo Ferroportuario</option>
+                                        <option value="Barrio Mosconi">Barrio Mosconi (Km 3)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Equipo / Estudiante</label>
+                                    <input type="text" id="logAuthorInput" required placeholder="Ej. Equipo 3 - Grupo 2°A" class="w-full text-xs p-2.5 rounded-lg border border-slate-700 bg-slate-950 text-slate-200 focus:ring-2 focus:ring-amber-500">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Observaciones o Hallazgos</label>
+                                <textarea id="logTextInput" required rows="2" placeholder="Escribe el avance, dato curioso o hallazgo de campo..." class="w-full text-xs p-2.5 rounded-lg border border-slate-700 bg-slate-950 text-slate-200 focus:ring-2 focus:ring-amber-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-amber-700 hover:bg-amber-800 text-amber-50 font-bold py-2 rounded-lg text-xs shadow transition">
+                                Guardar Avance en Carpeta de Campo
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Column: Gallery & Photo Progress -->
+                <div class="lg:col-span-5 space-y-6 lg:border-l lg:border-slate-800 lg:pl-6">
+                    <div class="border-b border-slate-800 pb-3">
+                        <h4 class="font-bold text-slate-100 text-lg font-serif">📷 Fotografías de Nuestros Progresos</h4>
+                        <p class="text-xs text-slate-400">Registro visual de salidas de campo y talleres</p>
+                    </div>
+
+                    <!-- Photo Gallery Grid -->
+                    <div class="grid grid-cols-2 gap-3" id="fieldPhotosGrid">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- School Signature Box -->
+                    <div class="border border-dashed border-amber-900/50 bg-amber-950/20 rounded-xl p-4 text-center">
+                        <div class="text-xs font-serif italic text-amber-200/90">
+                            "Aprender reconociendo nuestras raíces e historia común."
+                        </div>
+                        <div class="text-[10px] font-bold text-amber-400 mt-2 uppercase tracking-widest">
+                            Escuela N° 796 Antonio Berni
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-950 px-6 py-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                <span>Cuaderno de Registro Escolar N° 796</span>
+                <button onclick="toggleBookModal()" class="bg-slate-800 text-slate-200 px-4 py-1.5 rounded-lg font-semibold hover:bg-slate-700 transition">
+                    Cerrar Cuaderno
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERITAGE SITE DETAIL MODAL -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-4 overflow-y-auto">
+        <div class="relative w-full max-w-3xl bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden max-h-[90vh] flex flex-col text-slate-300">
+            <div class="relative h-56 sm:h-72 w-full overflow-hidden bg-slate-950">
+                <img id="modalImage" src="" alt="" class="w-full h-full object-cover opacity-85">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+                <button onclick="closeDetailModal()" class="absolute top-4 right-4 bg-slate-950/80 hover:bg-black text-white p-2 rounded-full border border-slate-800 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                <div class="absolute bottom-4 left-6 right-6 text-white">
+                    <span id="modalCategory" class="bg-patagonia-800 border border-sky-500/40 text-sky-300 text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full"></span>
+                    <h3 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold mt-1 text-slate-100"></h3>
+                </div>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-6 flex-grow">
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider">Información Oficial</h4>
+                    <p id="modalDescription" class="mt-2 text-slate-300 leading-relaxed text-sm sm:text-base"></p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-950/80 p-4 rounded-xl border border-slate-800 text-xs text-slate-300">
+                    <div>
+                        <strong class="block text-slate-100 font-bold mb-1">📍 Ubicación:</strong>
+                        <span id="modalLocation"></span>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-100 font-bold mb-1">🏛️ Estado de Protección:</strong>
+                        <span id="modalStatus"></span>
+                    </div>
+                </div>
+
+                <!-- Field Progress Note associated -->
+                <div class="border-l-4 border-amber-600 bg-amber-950/30 p-4 rounded-r-xl border border-amber-900/40">
+                    <h5 class="text-xs font-bold uppercase text-amber-400">Avance de Campo Escuela 796:</h5>
+                    <p id="modalStudentNote" class="text-xs text-amber-200/90 mt-1 italic"></p>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 px-6 py-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                <a id="modalOfficialBtn" href="#" target="_blank" class="bg-patagonia-800 hover:bg-patagonia-700 text-sky-100 border border-sky-600/30 font-bold px-4 py-2 rounded-xl text-xs transition flex items-center space-x-2">
+                    <span>Visitar Sitio Web Oficial Municipal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+                <button onclick="closeDetailModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-xl text-xs">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI ASSISTANT WIDGET (Dark Theme Chip + Lupa Bubble) -->
+    <div id="aiWidget" class="fixed bottom-5 right-5 z-50">
+        
+        <!-- Toggle Bubble Button -->
+        <button id="aiToggleBtn" onclick="toggleChatWindow()" class="ai-pulse bg-gradient-to-r from-slate-900 via-patagonia-950 to-slate-900 text-white p-3.5 sm:p-4 rounded-full shadow-2xl border border-sky-500/40 flex items-center justify-center group transition-transform hover:scale-110">
+            <!-- Logo: Chip + Lupa Icon -->
+            <div class="relative flex items-center justify-center">
+                <!-- Microchip SVG Icon -->
+                <svg class="w-7 h-7 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="5" width="14" height="14" rx="2" stroke-width="2"/>
+                    <path d="M9 2V5M15 2V5M9 19V22M15 19V22M2 9H5M2 15H5M19 9H22M19 15H22" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <!-- Magnifying Glass (Lupa) overlay on top of chip -->
+                <div class="absolute -bottom-1 -right-1 bg-amber-600 rounded-full p-1 border border-slate-950 text-slate-950 shadow-md">
+                    <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+            <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap text-xs font-bold pl-0 group-hover:pl-2 text-sky-300">
+                Asistente de Patrimonio
+            </span>
+        </button>
+
+        <!-- Chat Overlay Window -->
+        <div id="aiChatWindow" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-[380px] h-[520px] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden flex flex-col text-slate-200">
+            
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center space-x-2.5">
+                    <!-- Chip + Lupa Icon Badge -->
+                    <div class="relative bg-slate-800 p-2 rounded-xl border border-sky-500/30">
+                        <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="5" y="5" width="14" height="14" rx="2" stroke-width="2"/>
+                            <path d="M9 2V5M15 2V5M9 19V22M15 19V22M2 9H5M2 15H5M19 9H22M19 15H22" stroke-width="2"/>
+                        </svg>
+                        <div class="absolute -bottom-1 -right-1 bg-amber-600 rounded-full p-0.5 border border-slate-950">
+                            <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm leading-tight text-slate-100">Chip-Investigador IA</h4>
+                        <p class="text-[10px] text-sky-400">Asistente Escuela 796 &bull; Comodoro Rivadavia</p>
+                    </div>
+                </div>
+
+                <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Quick Question Chips -->
+            <div class="bg-slate-950 px-3 py-2 border-b border-slate-800/80 overflow-x-auto flex space-x-2 text-[11px] whitespace-nowrap">
+                <button onclick="askQuickQuestion('¿Cuándo se fundó el Faro San Jorge y qué altura tiene?')" class="bg-slate-900 border border-slate-800 hover:border-sky-500 px-2.5 py-1 rounded-full text-slate-300 shadow-2xs">
+                    💡 Faro San Jorge
+                </button>
+                <button onclick="askQuickQuestion('¿Por qué es histórico el Barrio Mosconi KM 3?')" class="bg-slate-900 border border-slate-800 hover:border-sky-500 px-2.5 py-1 rounded-full text-slate-300 shadow-2xs">
+                    🛢️ Barrio Mosconi
+                </button>
+                <button onclick="askQuickQuestion('¿Qué se exhibe en el Museo Ferroportuario?')" class="bg-slate-900 border border-slate-800 hover:border-sky-500 px-2.5 py-1 rounded-full text-slate-300 shadow-2xs">
+                    🚂 Ferroportuario
+                </button>
+            </div>
+
+            <!-- Chat Messages Log -->
+            <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-3 bg-slate-950/60 text-xs">
+                <!-- Greeting message -->
+                <div class="flex items-start space-x-2">
+                    <div class="w-7 h-7 rounded-lg bg-sky-950 border border-sky-800 text-sky-300 flex items-center justify-center shrink-0 text-[10px] font-bold">
+                        🔍
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-3 rounded-2xl rounded-tl-none text-slate-300 shadow-xs leading-relaxed">
+                        ¡Hola! Soy tu asistente de patrimonio de la <strong>Escuela N° 796 Antonio Berni</strong>. ¿Qué te gustaría aprender hoy sobre los patrimonios de Comodoro Rivadavia?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Box -->
+            <div class="p-3 bg-slate-900 border-t border-slate-800">
+                <form id="chatForm" onsubmit="handleSendChat(event)" class="flex items-center space-x-2">
+                    <input type="text" id="chatInput" placeholder="Haz una pregunta sobre el patrimonio..." required class="flex-grow text-xs p-2.5 rounded-xl border border-slate-700 bg-slate-950 text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <button type="submit" id="chatSendBtn" class="bg-sky-800 hover:bg-sky-700 text-white p-2.5 rounded-xl transition flex items-center justify-center">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic Javascript -->
+    <script>
+        
+        // Official Data for Comodoro Rivadavia Cultural Heritage Sites
+        const heritageData = [
+            {
+                id: 'museo-patagonico',
+                name: 'Museo Regional Patagónico "Prof. Antonio Garcés"',
+                category: 'Paleontología y Arqueología',
+                shortDesc: 'Primer museo de la ciudad dedicado a las ciencias naturales, la paleontología y las culturas originarias de la Patagonia.',
+                officialDesc: 'Fundado el 28 de junio de 1948, el Museo Regional Patagónico Profesor Antonio Garcés resguarda colecciones únicas de paleontología, arqueología, ciencias naturales y elementos de las culturas originarias. Emplazado en el icónico bulevar de Av. Rivadavia y Chacabuco, conserva la distintiva arquitectura de su edificio histórico.',
+                location: 'Av. Rivadavia & Chacabuco, Comodoro Rivadavia',
+                status: 'Bien de Interés Histórico Municipal',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/museo-regional-patagonico-profesor-antonio-garces/',
+                image: 'image_5089b4.jpg',
+                studentNote: 'En nuestra visita analizamos piezas fósiles locales e identificamos la riqueza geológica que rodea a nuestra cuenca.',
+                progressDate: '05 de Abril, 2026'
+            },
+            {
+                id: 'faro-san-jorge',
+                name: 'Faro San Jorge',
+                category: 'Patrimonio Histórico Marítimo',
+                shortDesc: 'Ícono del Golfo San Jorge con 27 metros de altura, inaugurado en 1925 en un entorno natural único.',
+                officialDesc: 'Librado al servicio el 9 de marzo de 1925, el Faro San Jorge tiene una torre de 27 metros de altura hecha de ladrillos calcáreos y alcanza una elevación de 78 metros sobre el nivel del mar. Declarado Patrimonio Histórico de Comodoro Rivadavia el 18 de agosto de 2005, es un símbolo centenario de guía para navegantes.',
+                location: 'Ruta Provincial 1, a 17 km al norte del centro',
+                status: 'Patrimonio Histórico (Ordenanza Municipal)',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/faro-san-jorge/',
+                image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+                studentNote: 'Registramos la presencia de aves marinas junto al farallón y medimos el impacto del viento costero en las estructuras.',
+                progressDate: '12 de Mayo, 2026'
+            },
+            {
+                id: 'cerro-chenque',
+                name: 'Cerro Chenque',
+                category: 'Patrimonio Natural y Geológico',
+                shortDesc: 'Majestuosa meseta costera de 212 metros que domina el paisaje de la ciudad y su historia.',
+                officialDesc: 'El Cerro Chenque es el rasgo geomorfológico más representativo de Comodoro Rivadavia. Con sus 212 metros de altura sobre el nivel del mar, constituye una formación estratigráfica patagónica que resguarda fósiles marinos antiguos y ofrece una vista panorámica excepcional de la costa y el centro urbano.',
+                location: 'Frente al litoral marino central de la ciudad',
+                status: 'Reserva Geológica y Emblema Natural',
+                officialUrl: 'https://comodoroturismo.gob.ar',
+                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+                studentNote: 'Tomamos muestras fotográficas de las capas sedimentarias y estudiamos los planes de estabilización urbana.',
+                progressDate: '28 de Mayo, 2026'
+            },
+            {
+                id: 'ferro-portuaria',
+                name: 'Complejo Ferroportuario (Museo Teodoro Nürnberg)',
+                category: 'Patrimonio Ferroviario e Industrial',
+                shortDesc: 'Antigua estación de ferrocarril y circuito portuario, testigo del origen del transporte patagónico.',
+                officialDesc: 'Declarado Bien Histórico Nacional (Ley Nº 24.798) y patrimonio local, este complejo abarca la antigua estación de tren de 1912, la plazoleta San Martín, la plaza Soberanía, los antiguos galpones y la ex Usina (CEPTur). Resguarda locomotoras, herramientas y material documental del antiguo Ferrocarril a Sarmiento.',
+                location: 'Av. Rivadavia y 9 de Julio, Centro',
+                status: 'Bien Histórico Nacional y Patrimonio Municipal',
+                officialUrl: 'https://cultura.vivamoscomodoro.gob.ar',
+                image: 'image_5091b4.jpg',
+                studentNote: 'Recorrimos el vagón histórico y la vieja torre de agua para digitalizar datos de la época ferroviaria.',
+                progressDate: '10 de Junio, 2026'
+            },
+            {
+                id: 'barrio-mosconi',
+                name: 'Barrio General Mosconi (KM 3)',
+                category: 'Cuna del Petróleo e Identidad',
+                shortDesc: 'Escenario del descubrimiento del petróleo en 1907 y cuna de YPF con emblemático patrimonio urbano.',
+                officialDesc: 'El Barrio General Mosconi (Km 3) es el corazón histórico petrolero. Allí se halla el Pozo N° 2 (descubrimiento del 13 de diciembre de 1907), el Museo Nacional del Petróleo, el Chalet Huergo, el Hospital Alvear y edificios icónicos de la ex YPF estatal creada bajo la visión del General Enrique Mosconi.',
+                location: 'Barrio General Mosconi (Km 3), Comodoro Rivadavia',
+                status: 'Conjunto Histórico y Cuna Industrial Nacional',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/km3-general-mosconi/',
+                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+                studentNote: 'Entrevistamos a antiguos vecinos de YPF y documentamos la arquitectura de la ex Proveeduría y el Chalet Huergo.',
+                progressDate: '02 de Julio, 2026'
+            }
+        ];
+
+        // Field Progress Logs stored for the "Carpeta de Campo"
+        let fieldLogs = [
+            {
+                id: 1,
+                patrimonio: 'Barrio Mosconi',
+                author: 'Grupo 1 - 3° Año (E.P. 796)',
+                date: '14 de Junio, 2026',
+                text: 'Relevamiento fotográfico de las fachadas del Chalet Huergo y los antiguos talleres. Se registró el excelente estado de conservación del parque.'
+            },
+            {
+                id: 2,
+                patrimonio: 'Faro San Jorge',
+                author: 'Prof. de Historia & Equipo 2',
+                date: '20 de Mayo, 2026',
+                text: 'Observación directa de la estructura del faro y lectura de las placas conmemorativas por sus 100 años de servicio a la navegación.'
+            },
+            {
+                id: 3,
+                patrimonio: 'Complejo Ferroportuario',
+                author: 'Alumnos E.P. 796 Antonio Berni',
+                date: '03 de Mayo, 2026',
+                text: 'Análisis de documentos históricos y mapas en la sala de archivo del Museo Teodoro Nürnberg. Transcripción de relatos ferroviarios.'
+            }
+        ];
+
+        // Progress Photo Gallery Items
+        const fieldPhotos = [
+            {
+                title: 'Museo Ferroportuario',
+                site: 'Complejo Ferroportuario',
+                url: 'image_5091b4.jpg'
+            },
+            {
+                title: 'Estudio Geológico Chenque',
+                site: 'Cerro Chenque',
+                url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                title: 'Museo Regional Garcés',
+                site: 'Museo Regional',
+                url: 'image_5089b4.jpg'
+            },
+            {
+                title: 'Salida al Faro San Jorge',
+                site: 'Faro San Jorge',
+                url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80'
+            }
+        ];
+
+        
+        // Initialize App on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHeritageCards();
+            renderOfficialLinks();
+            renderFieldLogs();
+            renderFieldPhotos();
+        });
+
+        let map3dInitialized = false;
+        let scene, camera, renderer, terrain, raycaster, mouse;
+        const pins3D = [];
+        let isDragging3D = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let targetRotationX = 0.5;
+        let targetRotationY = -0.6;
+        let targetDistance = 14;
+
+        function switchMapTab(tab) {
+            const btn2d = document.getElementById('tab2dBtn');
+            const btn3d = document.getElementById('tab3dBtn');
+            const container2d = document.getElementById('map2dContainer');
+            const container3d = document.getElementById('map3dContainer');
+
+            if (tab === '2d') {
+                btn2d.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 bg-sky-600 text-white shadow-md";
+                btn3d.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 text-slate-400 hover:text-white hover:bg-slate-800";
+                container2d.classList.remove('hidden');
+                container3d.classList.add('hidden');
+            } else {
+                btn3d.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 bg-sky-600 text-white shadow-md";
+                btn2d.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 text-slate-400 hover:text-white hover:bg-slate-800";
+                container3d.classList.remove('hidden');
+                container2d.classList.add('hidden');
+
+                if (!map3dInitialized) {
+                    init3DMap();
+                    map3dInitialized = true;
+                } else if (renderer && camera) {
+                    const canvas = document.getElementById('threeMapCanvas');
+                    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                    camera.updateProjectionMatrix();
+                }
+            }
+        }
+
+        // Initialize Three.js 3D Map for Comodoro Rivadavia Terrain & Heritage Markers
+        function init3DMap() {
+            const canvas = document.getElementById('threeMapCanvas');
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x070a12);
+            scene.fog = new THREE.FogExp2(0x070a12, 0.03);
+
+            camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+            
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0x38bdf8, 0.9);
+            dirLight.position.set(20, 30, 20);
+            scene.add(dirLight);
+
+            const amberLight = new THREE.PointLight(0xd97706, 1.2, 30);
+            amberLight.position.set(0, 5, 0);
+            scene.add(amberLight);
+
+            // 3D Terrain representation of Comodoro coastline & Cerro Chenque
+            const planeGeo = new THREE.PlaneGeometry(24, 18, 64, 64);
+            const pos = planeGeo.attributes.position;
+
+            for (let i = 0; i < pos.count; i++) {
+                const x = pos.getX(i);
+                const y = pos.getY(i);
+                
+                let z = Math.sin(x * 0.4) * Math.cos(y * 0.4) * 0.3;
+                
+                const distToChenque = Math.sqrt((x - 0.5) * (x - 0.5) + (y - 0.5) * (y - 0.5));
+                if (distToChenque < 3.5) {
+                    z += Math.cos(distToChenque / 3.5 * Math.PI) * 1.8;
+                }
+
+                if (y < -3) {
+                    z = -0.2;
+                }
+
+                pos.setZ(i, z);
+            }
+            planeGeo.computeVertexNormals();
+
+            const terrainMat = new THREE.MeshStandardMaterial({
+                color: 0x1e293b,
+                roughness: 0.8,
+                metalness: 0.2,
+                wireframe: false,
+                flatShading: true
+            });
+
+            terrain = new THREE.Mesh(planeGeo, terrainMat);
+            terrain.rotation.x = -Math.PI / 2;
+            scene.add(terrain);
+
+            const gridMat = new THREE.MeshBasicMaterial({
+                color: 0x0284c7,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.25
+            });
+            const gridMesh = new THREE.Mesh(planeGeo, gridMat);
+            gridMesh.rotation.x = -Math.PI / 2;
+            gridMesh.position.y = 0.02;
+            scene.add(gridMesh);
+
+            const waterGeo = new THREE.PlaneGeometry(30, 15);
+            const waterMat = new THREE.MeshBasicMaterial({
+                color: 0x0369a1,
+                transparent: true,
+                opacity: 0.4
+            });
+            const water = new THREE.Mesh(waterGeo, waterMat);
+            water.rotation.x = -Math.PI / 2;
+            water.position.set(0, -0.15, -5.5);
+            scene.add(water);
+
+            const locations3D = [
+                { id: 'museo-patagonico', x: -1.5, z: 1.0, color: 0x38bdf8 },
+                { id: 'faro-san-jorge', x: 6.5, z: -2.5, color: 0xf59e0b },
+                { id: 'cerro-chenque', x: 0.5, z: -0.5, color: 0x10b981 },
+                { id: 'ferro-portuaria', x: -2.5, z: 2.5, color: 0xec4899 },
+                { id: 'barrio-mosconi', x: 3.5, z: -1.0, color: 0x8b5cf6 }
+            ];
+
+            locations3D.forEach(loc => {
+                const itemData = heritageData.find(h => h.id === loc.id);
+                if (!itemData) return;
+
+                const pinGroup = new THREE.Group();
+                pinGroup.position.set(loc.x, 1.2, loc.z);
+
+                const coneGeo = new THREE.ConeGeometry(0.3, 0.8, 8);
+                coneGeo.rotateX(Math.PI);
+                const coneMat = new THREE.MeshStandardMaterial({
+                    color: loc.color,
+                    emissive: loc.color,
+                    emissiveIntensity: 0.6,
+                    roughness: 0.3
+                });
+                const cone = new THREE.Mesh(coneGeo, coneMat);
+                cone.position.y = 0.4;
+                pinGroup.add(cone);
+
+                const sphereGeo = new THREE.SphereGeometry(0.25, 16, 16);
+                const sphereMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+                const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+                sphere.position.y = 0.9;
+                pinGroup.add(sphere);
+
+                const beamGeo = new THREE.CylinderGeometry(0.04, 0.04, 2.5, 8);
+                const beamMat = new THREE.MeshBasicMaterial({
+                    color: loc.color,
+                    transparent: true,
+                    opacity: 0.5
+                });
+                const beam = new THREE.Mesh(beamGeo, beamMat);
+                beam.position.y = 1.25;
+                pinGroup.add(beam);
+
+                pinGroup.userData = itemData;
+                scene.add(pinGroup);
+                pins3D.push(pinGroup);
+            });
+
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+
+            canvas.addEventListener('mousedown', (e) => {
+                isDragging3D = true;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            canvas.addEventListener('mousemove', (e) => {
+                if (isDragging3D) {
+                    const deltaX = e.clientX - previousMousePosition.x;
+                    const deltaY = e.clientY - previousMousePosition.y;
+
+                    targetRotationY += deltaX * 0.008;
+                    targetRotationX += deltaY * 0.008;
+
+                    targetRotationX = Math.max(0.1, Math.min(Math.PI / 2.2, targetRotationX));
+
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                }
+            });
+
+            window.addEventListener('mouseup', () => { isDragging3D = false; });
+
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                targetDistance += e.deltaY * 0.01;
+                targetDistance = Math.max(6, Math.min(25, targetDistance));
+            }, { passive: false });
+
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = ((e.clientX - rect.left) / canvas.clientWidth) * 2 - 1;
+                mouse.y = -((e.clientY - rect.top) / canvas.clientHeight) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+                const intersects = raycaster.intersectObjects(scene.children, true);
+
+                for (let i = 0; i < intersects.length; i++) {
+                    let obj = intersects[i].object;
+                    while (obj.parent && obj.parent !== scene) {
+                        obj = obj.parent;
+                    }
+                    if (obj.userData && obj.userData.id) {
+                        show3dPopup(obj.userData);
+                        break;
+                    }
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (renderer && camera && !document.getElementById('map3dContainer').classList.contains('hidden')) {
+                    const w = canvas.clientWidth;
+                    const h = canvas.clientHeight;
+                    renderer.setSize(w, h);
+                    camera.aspect = w / h;
+                    camera.updateProjectionMatrix();
+                }
+            });
+
+            animate3DMap();
+        }
+
+        function animate3DMap() {
+            requestAnimationFrame(animate3DMap);
+
+            const x = targetDistance * Math.sin(targetRotationY) * Math.cos(targetRotationX);
+            const y = targetDistance * Math.sin(targetRotationX);
+            const z = targetDistance * Math.cos(targetRotationY) * Math.cos(targetRotationX);
+
+            camera.position.set(x, y, z);
+            camera.lookAt(0, 0, 0);
+
+            const time = Date.now() * 0.003;
+            pins3D.forEach((pin, idx) => {
+                pin.position.y = 1.2 + Math.sin(time + idx) * 0.15;
+                pin.rotation.y += 0.015;
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        function show3dPopup(data) {
+            document.getElementById('popup3dCategory').textContent = data.category;
+            document.getElementById('popup3dTitle').textContent = data.name;
+            document.getElementById('popup3dDesc').textContent = data.shortDesc;
+            
+            const btn = document.getElementById('popup3dBtn');
+            btn.onclick = () => {
+                openDetailModal(data.id);
+            };
+
+            document.getElementById('map3dPopup').classList.remove('hidden');
+        }
+
+        function close3dPopup() {
+            document.getElementById('map3dPopup').classList.add('hidden');
+        }
+
+        // Render Cards for the 5 Main Heritage Sites
+        function renderHeritageCards() {
+            const grid = document.getElementById('heritageGrid');
+            grid.innerHTML = heritageData.map((item, idx) => `
+                <div class="bg-slate-900/90 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-800 hover:border-slate-700 flex flex-col group backdrop-blur-sm">
+                    <div class="relative h-48 overflow-hidden bg-slate-950">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                        <span class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur text-sky-400 border border-sky-500/30 text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full">
+                            ${item.category}
+                        </span>
+                    </div>
+
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-100 group-hover:text-sky-300 transition leading-snug">
+                                ${item.name}
+                            </h4>
+                            <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
+                                ${item.shortDesc}
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                            <button onclick="openDetailModal('${item.id}')" class="text-xs font-bold text-sky-400 hover:text-sky-300 flex items-center space-x-1">
+                                <span>Leer Historia Oficial</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+
+                            <a href="${item.officialUrl}" target="_blank" title="Ver en Web Oficial" class="text-slate-500 hover:text-emerald-400 transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Official Link Directory Cards
+        function renderOfficialLinks() {
+            const container = document.getElementById('officialWebLinksGrid');
+            container.innerHTML = heritageData.map(item => `
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-sm hover:border-emerald-700/60 transition">
+                    <div class="flex items-start justify-between">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/50 text-emerald-400 flex items-center justify-center font-bold text-base">
+                            🏛️
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/50">
+                            Sitio Oficial
+                        </span>
+                    </div>
+                    <h5 class="font-bold text-slate-200 text-sm mt-3">${item.name}</h5>
+                    <p class="text-xs text-slate-400 mt-1 line-clamp-2">${item.officialDesc}</p>
+                    <a href="${item.officialUrl}" target="_blank" class="mt-4 inline-flex items-center space-x-1 text-xs font-bold text-emerald-400 hover:text-emerald-300">
+                        <span>Ir a la Web Municipal</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        // Render Field Logs inside the Book Modal
+        function renderFieldLogs() {
+            const container = document.getElementById('fieldLogsContainer');
+            const badge = document.getElementById('logCounterBadge');
+            
+            if (badge) badge.textContent = `${fieldLogs.length} Entradas`;
+
+            container.innerHTML = fieldLogs.map(log => `
+                <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 shadow-xs hover:border-slate-700 transition">
+                    <div class="flex items-center justify-between text-[11px] text-amber-400 font-semibold mb-1">
+                        <span class="bg-amber-950/80 border border-amber-900/50 text-amber-300 px-2 py-0.5 rounded-md">${log.patrimonio}</span>
+                        <span class="text-slate-500">${log.date}</span>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm font-sans mt-1 leading-relaxed">
+                        "${log.text}"
+                    </p>
+                    <div class="mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider text-right">
+                        ✍️ ${log.author}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Field Photos Grid in Modal
+        function renderFieldPhotos() {
+            const container = document.getElementById('fieldPhotosGrid');
+            container.innerHTML = fieldPhotos.map(photo => `
+                <div class="relative group rounded-xl overflow-hidden border border-slate-800 aspect-square bg-slate-950 shadow-xs">
+                    <img src="${photo.url}" alt="${photo.title}" class="w-full h-full object-cover opacity-85 group-hover:scale-110 group-hover:opacity-100 transition duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent flex flex-col justify-end p-2 text-white">
+                        <div class="text-[10px] font-bold leading-tight text-slate-100">${photo.title}</div>
+                        <div class="text-[9px] text-amber-400">${photo.site}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Handle submission of a new progress note to the Carpeta de Campo
+        function handleAddLog(e) {
+            e.preventDefault();
+            const patrimonio = document.getElementById('logPatrimonioSelect').value;
+            const author = document.getElementById('logAuthorInput').value;
+            const text = document.getElementById('logTextInput').value;
+
+            const newLog = {
+                id: Date.now(),
+                patrimonio: patrimonio,
+                author: author,
+                date: new Date().toLocaleDateString('es-AR', { day: '2-digit', month: 'short', year: 'numeric' }),
+                text: text
+            };
+
+            fieldLogs.unshift(newLog);
+            renderFieldLogs();
+
+            // Reset form
+            document.getElementById('addLogForm').reset();
+        }
+
+        // Toggle Carpeta de Campo (Book) Modal
+        function toggleBookModal() {
+            const modal = document.getElementById('bookModal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Open Individual Site Detail Modal
+        function openDetailModal(siteId) {
+            const site = heritageData.find(s => s.id === siteId);
+            if (!site) return;
+
+            document.getElementById('modalImage').src = site.image;
+            document.getElementById('modalTitle').textContent = site.name;
+            document.getElementById('modalCategory').textContent = site.category;
+            document.getElementById('modalDescription').textContent = site.officialDesc;
+            document.getElementById('modalLocation').textContent = site.location;
+            document.getElementById('modalStatus').textContent = site.status;
+            document.getElementById('modalStudentNote').textContent = site.studentNote;
+            document.getElementById('modalOfficialBtn').href = site.officialUrl;
+
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // Toggle AI Chat Window
+        function toggleChatWindow() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        // Quick Question Chip Trigger
+        function askQuickQuestion(questionText) {
+            document.getElementById('chatInput').value = questionText;
+            handleSendChat(new Event('submit'));
+        }
+
+        // Handle sending a message to the Gemini API Assistant
+        async function handleSendChat(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const userText = input.value.trim();
+            if (!userText) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // Append User Message
+            appendChatMessage('user', userText);
+            input.value = '';
+
+            // Show Thinking Indicator
+            const loadingId = appendChatMessage('bot', 'Pensando respuesta oficial...', true);
+
+            try {
+                const responseText = await queryGeminiAPI(userText);
+                removeChatMessage(loadingId);
+                appendChatMessage('bot', responseText);
+            } catch (err) {
+                console.error('Error fetching AI response:', err);
+                removeChatMessage(loadingId);
+                appendChatMessage('bot', 'El Museo Regional, Faro San Jorge, Cerro Chenque, Ferroportuario y Barrio Mosconi son los 5 patrimonios oficiales de Comodoro. ¿Deseas volver a consultar?');
+            }
+        }
+
+        // Append Chat Bubble to Chat Window
+        function appendChatMessage(sender, text, isLoading = false) {
+            const chatMessages = document.getElementById('chatMessages');
+            const msgId = 'msg-' + Date.now();
+            const isUser = sender === 'user';
+
+            const div = document.createElement('div');
+            div.id = msgId;
+            div.className = `flex items-start space-x-2 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`;
+
+            const iconHtml = isUser
+                ? `<div class="w-7 h-7 rounded-lg bg-amber-700 text-white flex items-center justify-center shrink-0 text-[10px] font-bold">Tú</div>`
+                : `<div class="w-7 h-7 rounded-lg bg-sky-950 border border-sky-800 text-sky-300 flex items-center justify-center shrink-0 text-[10px] font-bold">🔍</div>`;
+
+            const bgClass = isUser
+                ? 'bg-sky-900 border border-sky-700 text-white rounded-tr-none'
+                : 'bg-slate-900 border border-slate-800 text-slate-300 rounded-tl-none';
+
+            div.innerHTML = `
+                ${iconHtml}
+                <div class="${bgClass} p-3 rounded-2xl shadow-xs leading-relaxed max-w-[80%]">
+                    ${isLoading ? '<span class="animate-pulse">⏳ ' + text + '</span>' : text}
+                </div>
+            `;
+
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return msgId;
+        }
+
+        function removeChatMessage(msgId) {
+            const el = document.getElementById(msgId);
+            if (el) el.remove();
+        }
+
+        // Call Gemini 3 Flash API with context of Comodoro Rivadavia Cultural Heritage
+        async function queryGeminiAPI(userQuery) {
+            const apiKey = ""; // API key automatically handled by environment runtime if present
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const systemPrompt = `
+                Eres "Chip-Investigador", un asistente de inteligencia artificial amigable, conciso y fácil de entender de la Escuela N° 796 "Antonio Berni" de Comodoro Rivadavia, Chubut.
+                Tu objetivo es responder preguntas sobre los 5 patrimonios culturales de Comodoro Rivadavia:
+                1. Museo Regional Patagónico "Prof. Antonio Garcés" (paleontología, arqueología, ciencias naturales).
+                2. Faro San Jorge (inaugurado en 1925, 27 metros de altura, patrimonio histórico).
+                3. Cerro Chenque (meseta emblemática de 212m, fósiles marinos y vista costera).
+                4. Complejo Ferroportuario / Museo Teodoro Nürnberg (ex estación de tren, plazoleta San Martín, historia ferroviaria).
+                5. Barrio General Mosconi / KM 3 (cuna de YPF, Pozo N°2, Chalet Huergo, Museo Nacional del Petróleo).
+
+                Responde siempre en español claro, ameno y educativo. Sé breves (máximo 2 párrafos cortos).
+            `;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            // Implement Exponential Backoff Fetch
+            let delay = 1000;
+            for (let attempt = 0; attempt < 3; attempt++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    const data = await response.json();
+                    
+                    const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (answer) return answer;
+                } catch (error) {
+                    if (attempt === 2) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+            throw new Error("No response from AI API");
+        }
+    </script>
+</body>
+</html>
