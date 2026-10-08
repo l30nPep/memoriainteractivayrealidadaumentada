@@ -15,7 +15,7 @@ allow_methods=["*"],
 allow_headers=["*"],
 )
 # Inicializar cliente de Gemini (busca automáticamente la variable
-GEMINI_API_KEY)
+GEMINI_API_KEY
 client = genai.Client()
 
 # Tu base de conocimientos estática
