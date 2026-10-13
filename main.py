@@ -20,16 +20,12 @@ client = genai.Client()
 
 # Tu base de conocimientos estática
 DOCUMENTOS = {
-"Documento_A": "Información sobre horarios, precios de
-entradas, ubicación del museo y políticas de reembolso.",
-"Documento_B": "Guía de solución de problemas técnicos,
-reinicio de contraseñas y cómo contactar a soporte.",
-"Documento_C": "Catálogo de productos disponibles, stock de
-remeras, talles y envíos a todo el país.",
-"Documento_D": "Historia de la empresa, misión, visión y
-biografías de los fundadores.",
-"Documento_E": "Términos y condiciones legales, políticas de
-privacidad y uso de cookies."
+"Cerro_Chenque": "informacion sobre el Cerro Chenque, ubicacion y por que es un lugar historico el Cerro Chenque.",
+"Faro_san_Jorge": "informacion sobre el Faro san Jorge, ubicacion y por que es un lugar historico el Faro san Jorge.",
+"Museo_Regional_Patagonico": "informacion sobre el Museo Regional Patagonico, ubicacion y por que es un lugar historico el Museo Regional Patagonico.",
+"Museo_Ferroportuario": "informacion sobre el Museo Ferroportuario, ubicacion y por que es un lugar historico el Museo Ferroportuario.",
+"Barrio_Mosconi": "informacion sobre el Barrio Mosconi, ubicacion y por que es un lugar historico el Barrio Mosconi",
+"Barrio_Astra": "informacion sobre el Barrio Astra, ubicacion y por que es un lugar historico el Barrio Astra."
 }
 class ConsultaRequest(BaseModel):
 pregunta: str
