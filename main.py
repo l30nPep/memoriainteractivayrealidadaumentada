@@ -63,7 +63,7 @@ leída en voz alta.
 """
 # Llamada a la API de Gemini (usando el modelo rápido
 
-flash)
+flash
 
 response = client.models.generate_content(
 model='gemini-2.5-flash',
