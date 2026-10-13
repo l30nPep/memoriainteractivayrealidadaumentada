@@ -43,13 +43,14 @@ la IA a actuar como Router
 instrucciones_sistema = f"""
 Eres un asistente inteligente. Tienes acceso a los
 
-siguientes 5 documentos de referencia:
+siguientes 6 documentos de referencia:
 
-- Documento_A: {DOCUMENTOS['Documento_A']}
-- Documento_B: {DOCUMENTOS['Documento_B']}
-- Documento_C: {DOCUMENTOS['Documento_C']}
-- Documento_D: {DOCUMENTOS['Documento_D']}
-- Documento_E: {DOCUMENTOS['Documento_E']}
+- Cerro_Chenque: {DOCUMENTOS['Cerro_Chenque']}
+- Faro_san_Jorge: {DOCUMENTOS['Faro_san_Jorge']}
+- Museo_Regional_Patagonico: {DOCUMENTOS['Documento_C']}
+- Museo_Ferroportuario: {DOCUMENTOS['Museo_Ferroportuario']}
+- Barrio_Mosconi: {DOCUMENTOS['Barrio_mosconi']}
+- Barrio_Astra: {DOCUMENTOS['Barrio_Astra']}
 Tu tarea:
 1. Analiza la pregunta del usuario.
 2. Deduce cuál de los 5 documentos contiene la información
