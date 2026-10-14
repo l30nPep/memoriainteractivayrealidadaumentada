@@ -28,7 +28,7 @@ DOCUMENTOS = {
 "Barrio_Astra": "informacion sobre el Barrio Astra, ubicacion y por que es un lugar historico el Barrio Astra."
 }
 class ConsultaRequest(BaseModel):
-pregunta: str
+  pregunta: str
 @app.post("/preguntar")
 async def procesar_pregunta(request: ConsultaRequest):
 try:
