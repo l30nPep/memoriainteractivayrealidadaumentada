@@ -35,12 +35,7 @@ async def procesar_pregunta(request: ConsultaRequest):
     # "Construimos un System Instruction dinámico que obliga a la IA a actuar como Router"
 
     instrucciones_sistema = f"""
-    return {"respuestas": respuestas}
-  except Exception as e:
-    return {"error": str(e)}
-Eres un asistente inteligente. Tienes acceso a los
-
-siguientes 6 documentos de referencia:
+Eres un asistente inteligente. Tienes acceso a los siguientes 6 documentos de referencia:
 
 - Cerro_Chenque: {DOCUMENTOS['Cerro_Chenque']}
 - Faro_san_Jorge: {DOCUMENTOS['Faro_san_Jorge']}
@@ -50,34 +45,22 @@ siguientes 6 documentos de referencia:
 - Barrio_Astra: {DOCUMENTOS['Barrio_Astra']}
 Tu tarea:
 1. Analiza la pregunta del usuario.
-2. Deduce cuál de los 5 documentos contiene la información
-
-necesaria para responder.
-
-3. Responde a la pregunta del usuario utilizando
-
-exclusivamente la información de ese documento.
-
-4. Sé breve, directo y conciso, ya que tu respuesta será
-
-leída en voz alta.
+2. Deduce cuál de los 5 documentos contiene la información necesaria para responder.
+3. Responde a la pregunta del usuario utilizando exclusivamente la información de ese documento.
+4. Sé breve, directo y conciso, ya que tu respuesta será leída en voz alta.
 """
-# Llamada a la API de Gemini (usando el modelo rápido
+# Llamada a la API de Gemini (usando el modelo rápido)
 
-flash
+#return {"respuestas": respuestas}
+    
+ # except Exception as e:
+  #  return {"error": str(e)}
 
-response = client.models.generate_content(
-model='gemini-2.5-flash',
-contents=request.pregunta,
-config=types.GenerateContentConfig(
-
-system_instruction=instrucciones_sistema,
-temperature=0.3 # Baja temperatura para evitar que
-
-invente cosas (alucine)
-
-)
-)
+#response = client.models.generate_content(model='gemini-2.5-flash',contents=request.pregunta, config=types.GenerateContentConfig( system_instruction=instrucciones_sistema,temperature=0.3 # Baja temperatura para evitar que
+#invente cosas (alucine)
+#)
+#)
 return {"respuesta": response.text}
 except Exception as e:
 raise HTTPException(status_code=500, detail=str(e))
+
