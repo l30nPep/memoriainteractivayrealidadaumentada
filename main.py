@@ -30,11 +30,9 @@ DOCUMENTOS = {
 class ConsultaRequest(BaseModel):
   pregunta: str
 @app.post("/preguntar")
-async def procesar_pregunta(request: ConsultaRequest):
-  try:
-# Construimos un System Instruction dinámico que obliga a
-
-la IA a actuar como Router
+async def procesar_pregunta(request: ConsultaRequest): 
+    try:
+# "Construimos un System Instruction dinámico que obliga a la IA a actuar como Router"
 
 instrucciones_sistema = f"""
 Eres un asistente inteligente. Tienes acceso a los
