@@ -34,7 +34,7 @@ async def procesar_pregunta(request: ConsultaRequest):
   try:
     # "Construimos un System Instruction dinámico que obliga a la IA a actuar como Router"
 
-instrucciones_sistema = f"""
+    instrucciones_sistema = f"""
 Eres un asistente inteligente. Tienes acceso a los
 
 siguientes 6 documentos de referencia:
