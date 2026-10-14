@@ -35,6 +35,9 @@ async def procesar_pregunta(request: ConsultaRequest):
     # "Construimos un System Instruction dinámico que obliga a la IA a actuar como Router"
 
     instrucciones_sistema = f"""
+    return {"respuestas": respuestas}
+  except Exception as e:
+    return {"error": str(e)}
 Eres un asistente inteligente. Tienes acceso a los
 
 siguientes 6 documentos de referencia:
