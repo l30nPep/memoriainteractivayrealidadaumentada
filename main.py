@@ -6,6 +6,36 @@ from google import genai
 from google.genai import types
 
 app = FastAPI()
+# Inicializamos la aplicación
+app = Flask(_name_)
+
+# Configuramos el cliente de Gemini (asegúrate de tener tu API Key configurada en tu sistema)
+client = genai.Client()
+
+@app.route("/", methods=["GET", "POST"])
+def puente_ia():
+    pregunta_usuario = ""
+    respuesta_ia = ""
+    
+    # Cuando el usuario le da a "Enviar" en la página
+    if request.method == "POST":
+        # 1. Python recibe la pregunta que mandó el HTML
+        pregunta_usuario = request.form.get("pregunta", "")
+        
+        if pregunta_usuario:
+            try:
+                # 2. Python le manda la pregunta a Gemini y espera la respuesta
+                response = client.models.generate_content(
+                    model='gemini-2.5-flash',
+                    contents=pregunta_usuario,
+                )
+                # 3. Guardamos la respuesta que dio la IA
+                respuesta_ia = response.text
+            except Exception as e:
+                respuesta_ia = f"Ocurrió un error al conectar con Gemini: {e}"
+                
+    # 4. Devolvemos todo a la página web para que se muestre en pantalla
+    return render_template("index.html", pregunta=pregunta_usuario, respuesta=respuesta_ia)
 
 # Permitir que tu frontend de GitHub Pages se conecte al backend
 app.add_middleware(
