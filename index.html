@@ -1428,6 +1428,29 @@
             }
             throw new Error("No response from AI API");
         }
+        <meta charset="UTF-8">
+    <title>Puente HTML y Python con Gemini</title>
+</head>
+<body>
+
+    <h1>Mi Página Web con Puente a IA</h1>
+    <p>Escribe tu pregunta y deja que Python la lleve con Gemini.</p>
+
+    <!-- El formulario que envía los datos a Python por POST -->
+    <form method="POST">
+        <label for="pregunta">Tu pregunta:</label><br><br>
+        <textarea name="pregunta" id="pregunta" rows="4" cols="50" placeholder="Escribe aquí..."></textarea><br><br>
+        <button type="submit">Enviar al Puente</button>
+    </form>
+
+    <!-- Si Python ya trajo la respuesta de la IA, la mostramos aquí -->
+    {% if respuesta %}
+        <hr>
+        <h3>Resultado del puente:</h3>
+        <p><b>Tú preguntaste:</b> {{ pregunta }}</p>
+        <p><b>Gemini respondió:</b></p>
+        <p style="background-color: #f2f2f2; padding: 10px;">{{ respuesta }}</p>
+    {% endif %}
     </script>
 </body>
 </html>
