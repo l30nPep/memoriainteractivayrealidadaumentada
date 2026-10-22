@@ -28,7 +28,7 @@ DOCUMENTOS = {
 "Museo_Regional_patagonico": "Información de que es, por que es un lugar historico y donde se ubica el Museo Regional Patagonico."
 }
 class ConsultaRequest(BaseModel):
-pregunta: str
+  pregunta: str
 @app.post("/preguntar")
 async def procesar_pregunta(request: ConsultaRequest):
 try:
