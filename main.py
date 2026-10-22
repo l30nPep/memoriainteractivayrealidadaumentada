@@ -20,16 +20,12 @@ client = genai.Client()
 
 # Tu base de conocimientos estática
 DOCUMENTOS = {
-"Documento_A": "Información sobre horarios, precios de
-entradas, ubicación del museo y políticas de reembolso.",
-"Documento_B": "Guía de solución de problemas técnicos,
-reinicio de contraseñas y cómo contactar a soporte.",
-"Documento_C": "Catálogo de productos disponibles, stock de
-remeras, talles y envíos a todo el país.",
-"Documento_D": "Historia de la empresa, misión, visión y
-biografías de los fundadores.",
-"Documento_E": "Términos y condiciones legales, políticas de
-privacidad y uso de cookies."
+"Barrio_Astra": "Información de que es, por que es un lugar historico y donde se ubica el.",
+"Barrio_mosconi": "Información de que es, por que es un lugar historico y donde se ubica el.",
+"Museo_Ferroportuario": "Información de que es, por que es un lugar historico y donde se ubica el.",
+"Cerro_Chenque": "Información de que es, por que es un lugar historico y donde se ubica el.",
+"Museo_Nacional_del_Petroleo": "Información de que es, por que es un lugar historico y donde se ubica el.",
+"Museo_Regional_patagonico": "Información de que es, por que es un lugar historico y donde se ubica el."
 }
 class ConsultaRequest(BaseModel):
 pregunta: str
@@ -43,13 +39,14 @@ la IA a actuar como Router
 instrucciones_sistema = f"""
 Eres un asistente inteligente. Tienes acceso a los
 
-siguientes 5 documentos de referencia:
+siguientes 6 documentos de referencia:
 
-- Documento_A: {DOCUMENTOS['Documento_A']}
-- Documento_B: {DOCUMENTOS['Documento_B']}
-- Documento_C: {DOCUMENTOS['Documento_C']}
-- Documento_D: {DOCUMENTOS['Documento_D']}
-- Documento_E: {DOCUMENTOS['Documento_E']}
+- Barrio_Astra: {DOCUMENTOS['Barrio_Astra']}
+- Barrio_mosconi: {DOCUMENTOS['Barrio_mosconi']}
+- Museo_Ferroportuario: {DOCUMENTOS['Museo_Ferroportuario']}
+- Cerro_Chenque: {DOCUMENTOS['Cerro_Chenque']}
+- Museo_Nacional_del_Petroleo: {DOCUMENTOS['Museo_Nacional_del_Petroleo']}
+- Museo_Regional_patagonico: {DOCUMENTOS['Museo_Regional_patagonico']}
 Tu tarea:
 1. Analiza la pregunta del usuario.
 2. Deduce cuál de los 5 documentos contiene la información
