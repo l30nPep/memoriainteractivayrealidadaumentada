@@ -61,9 +61,7 @@ exclusivamente la información de ese documento.
 
 leída en voz alta.
 """
-# Llamada a la API de Gemini (usando el modelo rápido
-
-flash)
+# Llamada a la API de Gemini (usando el modelo rápido flash)
 
 response = client.models.generate_content(
 model='gemini-2.5-flash',
