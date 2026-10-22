@@ -31,7 +31,7 @@ class ConsultaRequest(BaseModel):
   pregunta: str
 @app.post("/preguntar")
 async def procesar_pregunta(request: ConsultaRequest):
-try:
+  try:
 # Construimos un System Instruction dinámico que obliga a
 
 la IA a actuar como Router
