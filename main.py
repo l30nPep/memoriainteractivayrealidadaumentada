@@ -20,12 +20,12 @@ client = genai.Client()
 
 # Tu base de conocimientos estática
 DOCUMENTOS = {
-"Barrio_Astra": "Información de que es, por que es un lugar historico y donde se ubica el.",
-"Barrio_mosconi": "Información de que es, por que es un lugar historico y donde se ubica el.",
-"Museo_Ferroportuario": "Información de que es, por que es un lugar historico y donde se ubica el.",
-"Cerro_Chenque": "Información de que es, por que es un lugar historico y donde se ubica el.",
-"Museo_Nacional_del_Petroleo": "Información de que es, por que es un lugar historico y donde se ubica el.",
-"Museo_Regional_patagonico": "Información de que es, por que es un lugar historico y donde se ubica el."
+"Barrio_Astra": "Información de que es, por que es un lugar historico y donde se ubica el Barrio Astra.",
+"Barrio_mosconi": "Información de que es, por que es un lugar historico y donde se ubica el Barrio Mosconi.",
+"Museo_Ferroportuario": "Información de que es, por que es un lugar historico y donde se ubica el Museo Ferroportuario.",
+"Cerro_Chenque": "Información de que es, por que es un lugar historico y donde se ubica el Cerro Chenque.",
+"Museo_Nacional_del_Petroleo": "Información de que es, por que es un lugar historico y donde se ubica el Museo Nacional del Petroleo.",
+"Museo_Regional_patagonico": "Información de que es, por que es un lugar historico y donde se ubica el Museo Regional Patagonico."
 }
 class ConsultaRequest(BaseModel):
 pregunta: str
@@ -42,11 +42,11 @@ Eres un asistente inteligente. Tienes acceso a los
 siguientes 6 documentos de referencia:
 
 - Barrio_Astra: {DOCUMENTOS['Barrio_Astra']}
-- Barrio_mosconi: {DOCUMENTOS['Barrio_mosconi']}
+- Barrio_Mosconi: {DOCUMENTOS['Barrio_mosconi']}
 - Museo_Ferroportuario: {DOCUMENTOS['Museo_Ferroportuario']}
 - Cerro_Chenque: {DOCUMENTOS['Cerro_Chenque']}
 - Museo_Nacional_del_Petroleo: {DOCUMENTOS['Museo_Nacional_del_Petroleo']}
-- Museo_Regional_patagonico: {DOCUMENTOS['Museo_Regional_patagonico']}
+- Museo_Regional_patagonico: {DOCUMENTOS['Museo_Regional_Patagonico']}
 Tu tarea:
 1. Analiza la pregunta del usuario.
 2. Deduce cuál de los 5 documentos contiene la información
