@@ -5,10 +5,6 @@ from pydantic import BaseModel
 from google import genai
 from google.genai import types
 
-app = FastAPI()
-# Inicializamos la aplicación
-app = Flask(_name_)
-
 # Configuramos el cliente de Gemini (asegúrate de tener tu API Key configurada en tu sistema)
 client = genai.Client()
 
