@@ -14,8 +14,7 @@ allow_credentials=True,
 allow_methods=["*"],
 allow_headers=["*"],
 )
-# Inicializar cliente de Gemini (busca automáticamente la variable
-GEMINI_API_KEY
+# Inicializar cliente de Gemini (busca automáticamente la variable GEMINI_API_KEY)
 client = genai.Client()
 
 # Tu base de conocimientos estática
@@ -28,13 +27,11 @@ DOCUMENTOS = {
 "Museo_Regional_patagonico": "Información de que es, por que es un lugar historico y donde se ubica el Museo Regional Patagonico."
 }
 class ConsultaRequest(BaseModel):
-  pregunta: str
+    pregunta: str
 @app.post("/preguntar")
 async def procesar_pregunta(request: ConsultaRequest):
-  try:
-# Construimos un System Instruction dinámico que obliga a
-
-la IA a actuar como Router
+    try:
+# Construimos un System Instruction dinámico que obliga a la IA a actuar como Router
 
 instrucciones_sistema = f"""
 Eres un asistente inteligente. Tienes acceso a los
@@ -63,18 +60,18 @@ leída en voz alta.
 """
 # Llamada a la API de Gemini (usando el modelo rápido flash)
 
-response = client.models.generate_content(
-model='gemini-2.5-flash',
-contents=request.pregunta,
-config=types.GenerateContentConfig(
+        response = client.models.generate_content(
+        model='gemini-2.5-flash',
+        contents=request.pregunta,
+        config=types.GenerateContentConfig(
 
-system_instruction=instrucciones_sistema,
-temperature=0.3 # Baja temperatura para evitar que
+        system_instruction=instrucciones_sistema,
+        temperature=0.3 # Baja temperatura para evitar que
 
-invente cosas (alucine)
+        #invente cosas (alucine)
 
-)
-)
-return {"respuesta": response.text}
-except Exception as e:
-raise HTTPException(status_code=500, detail=str(e))
+        )
+        )
+        return {"respuesta": response.text}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
