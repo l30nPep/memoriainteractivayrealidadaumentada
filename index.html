@@ -857,40 +857,6 @@
                 date: '03 de Mayo, 2026',
                 text: 'Análisis de documentos históricos y mapas en la sala de archivo del Museo Teodoro Nürnberg. Transcripción de relatos ferroviarios.'
             }
-        ];
-
-        // Progress Photo Gallery Items
-        const fieldPhotos = [
-            {
-                title: 'Museo Ferroportuario',
-                site: 'Complejo Ferroportuario',
-                url: 'image_5091b4.jpg'
-            },
-            {
-                title: 'Estudio Geológico Chenque',
-                site: 'Cerro Chenque',
-                url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'
-            },
-            {
-                title: 'Museo Regional Garcés',
-                site: 'Museo Regional',
-                url: 'image_5089b4.jpg'
-            },
-            {
-                title: 'Salida al Faro San Jorge',
-                site: 'Faro San Jorge',
-                url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80'
-            }
-        ];
-
-        
-        // Initialize App on DOM Load
-        document.addEventListener('DOMContentLoaded', () => {
-            renderHeritageCards();
-            renderOfficialLinks();
-            renderFieldLogs();
-            renderFieldPhotos();
-        });
 
         let map3dInitialized = false;
         let scene, camera, renderer, terrain, raycaster, mouse;
