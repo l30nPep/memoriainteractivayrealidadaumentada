@@ -1237,6 +1237,17 @@
                     <div class="mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider text-right">
                         ✍️ ${log.author}
                     </div>
+                    <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 shadow-xs hover:border-slate-700 transition">
+                    <div class="flex items-center justify-between text-[11px] text-amber-400 font-semibold mb-1">
+                        <span class="bg-amber-950/80 border border-amber-900/50 text-amber-300 px-2 py-0.5 rounded-md">${log.patrimonio}</span>
+                        <span class="text-slate-500">${log.date}</span>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm font-sans mt-1 leading-relaxed">
+                        "${log.text}"
+                    </p>
+                    <div class="mt-2 text-[10px] text-slate-400 font-bold uppercase tracking-wider text-right">
+                        ✍️ ${log.author}
+                    </div>
                 </div>
             `).join('');
         }
