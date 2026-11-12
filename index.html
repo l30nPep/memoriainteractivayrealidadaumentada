@@ -52,20 +52,12 @@
             color: #cbd5e1;
         }
 
-        /* Dark Glassmorphism effects */
         .glass-card {
             background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .glass-dark {
-            background: rgba(11, 15, 23, 0.85);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Dark Book page texture effect for Carpeta de Campo */
         .book-page {
             background-color: #131822;
             background-image: radial-gradient(#252e3e 0.75px, transparent 0.75px);
@@ -73,7 +65,6 @@
             box-shadow: inset 20px 0 30px -15px rgba(0,0,0,0.5);
         }
 
-        /* Pulse ring for AI Assistant */
         @keyframes pulse-ring {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.5); }
             70% { transform: scale(1.05); box-shadow: 0 0 0 14px rgba(2, 132, 199, 0); }
@@ -84,7 +75,6 @@
             animation: pulse-ring 3s infinite;
         }
 
-        /* Book Button Animation */
         .btn-book {
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -92,7 +82,6 @@
             transform: translateY(-3px) scale(1.03);
         }
 
-        /* Custom scrollbars */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -111,25 +100,21 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-patagonia-700 selection:text-white bg-slate-950 text-slate-300">
 
-    <!-- Header with School Logo -->
+    <!-- Header -->
     <header class="sticky top-0 z-40 w-full glass-card border-b border-slate-800/80 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-            
-            <!-- Logo Escuela 796 Antonio Berni in Top Corner -->
             <div class="flex items-center space-x-2 sm:space-x-3">
                 <div class="relative group cursor-pointer" tabindex="0">
                     <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 p-0.5 shadow-md flex items-center justify-center transition-transform group-hover:scale-105 border border-amber-500/40 shrink-0">
                        <img src="imagenes/logo escuela.png" alt="Logo Escuela N° 796" class="w-full h-full rounded-full object-contain">
                     </div>
 
-                    <!-- Social Media Hover / Click Popover Menu -->
                     <div class="absolute top-full left-0 mt-2 w-56 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-2xl shadow-2xl p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-200 z-50 transform origin-top-left group-hover:translate-y-0 translate-y-1">
                         <div class="text-[10px] uppercase font-extrabold tracking-wider text-slate-400 px-2.5 py-1 border-b border-slate-800 mb-1 flex items-center justify-between">
                             <span>Sitios y Redes Oficiales</span>
                             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                         </div>
                         
-                        <!-- Sitio Web Oficial Button -->
                         <a href="https://esc796-chubut.edu.ar" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2.5 p-2 rounded-xl hover:bg-sky-900/40 text-slate-200 hover:text-white transition">
                             <div class="w-7 h-7 rounded-lg bg-sky-600 flex items-center justify-center shrink-0 shadow-sm">
                                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,7 +127,6 @@
                             </div>
                         </a>
 
-                        <!-- Instagram Button -->
                         <a href="https://www.instagram.com/escuela796/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2.5 p-2 rounded-xl hover:bg-gradient-to-r hover:from-purple-900/50 hover:to-pink-900/50 text-slate-200 hover:text-white transition">
                             <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center shrink-0 shadow-sm">
                                 <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -155,7 +139,6 @@
                             </div>
                         </a>
 
-                        <!-- Facebook Button -->
                         <a href="https://www.facebook.com/Escuela796/posts/1676485381150538/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2.5 p-2 rounded-xl hover:bg-blue-900/40 text-slate-200 hover:text-white transition">
                             <div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center shrink-0 shadow-sm">
                                 <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -179,7 +162,6 @@
                 </div>
             </div>
 
-            <!-- Navigation Links & Book Button -->
             <div class="flex items-center space-x-2 sm:space-x-4">
                 <nav class="hidden md:flex space-x-6 text-sm font-semibold text-slate-300">
                     <a href="#patrimonios" class="hover:text-sky-400 transition">Patrimonios</a>
@@ -188,10 +170,9 @@
                     <a href="#proyecto" class="hover:text-sky-400 transition">Sobre el Proyecto</a>
                 </nav>
 
-                <!-- Carpeta de Campo Button in Shape of a Book -->
                 <button id="openBookBtn" onclick="toggleBookModal()" class="btn-book flex items-center space-x-2 bg-gradient-to-r from-amber-900/90 via-amber-800 to-chenque-700 text-amber-100 px-4 py-2.5 rounded-xl shadow-lg shadow-amber-950/40 hover:shadow-amber-900/40 font-medium text-sm border border-amber-600/30">
                     <div class="bg-amber-950/60 p-1.5 rounded-lg border border-amber-500/30 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
                     </div>
@@ -223,7 +204,6 @@
                     Nuestros patrimonios culturales e históricos <strong class="text-amber-400 font-semibold">Escuela N° 796 "Antonio Berni"</strong> con la información oficial de la Municipalidad de Comodoro Rivadavia y nuestra carpeta de avances de campo.
                 </p>
 
-                <!-- Quick Stats / Highlights -->
                 <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
                     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 backdrop-blur shadow-sm">
                         <div class="text-2xl sm:text-3xl font-extrabold text-sky-400">7</div>
@@ -257,52 +237,55 @@
                 </p>
             </div>
 
-            <!-- Heritage Cards Grid -->
-            <div id="heritageGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Javascript will inject heritage cards dynamically -->
-            </div>
+            <div id="heritageGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </section>
 
-        <!-- Interactive Map Section (2D Genially & 3D Mapme) -->
+        <!-- Interactive Map Section (3D Mapme Principal & 2D Genially) -->
         <section id="mapa" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-amber-400 bg-slate-900 px-3 py-1 rounded-full border border-amber-900/60">Cartografía Escolar</span>
-                    <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-100 mt-2">Mapa Interactivo 2D y 3D</h3>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-100 mt-2">Mapa Interactivo 3D y 2D</h3>
                 </div>
                 <p class="text-slate-400 text-sm max-w-md mt-2 md:mt-0">
-                    Explora la ubicación geográfica de los 7 patrimonios históricos en el mapa 2D interactivo o navega la vista tridimensional en Mapme.
+                    Explora la vista tridimensional en Mapme o cambia a la presentación interactiva 2D en Genially.
                 </p>
             </div>
 
-            <!-- Tab Switcher -->
-            <div class="flex items-center space-x-3 mb-6 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 w-fit">
-                <button id="tab2dBtn" onclick="switchMapTab('2d')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 bg-sky-600 text-white shadow-md">
-                    <span>🗺️ Mapa 2D (Genially)</span>
-                </button>
-                <button id="tab3dBtn" onclick="switchMapTab('3d')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 text-slate-400 hover:text-white hover:bg-slate-800">
-                    <span>🌐 Mapa 3D Interactivo</span>
-                </button>
+            <!-- Tab Switcher + External Link Fallback -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <div class="flex items-center space-x-3 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 w-fit">
+                    <button id="tab3dBtn" onclick="switchMapTab('3d')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 bg-sky-600 text-white shadow-md">
+                        <span>🌐 Mapa 3D Interactivo</span>
+                    </button>
+                    <button id="tab2dBtn" onclick="switchMapTab('2d')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 text-slate-400 hover:text-white hover:bg-slate-800">
+                        <span>🗺️ Mapa 2D (Genially)</span>
+                    </button>
+                </div>
+
+                <a href="https://viewer.mapme.com/mapa3d" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 bg-slate-900 hover:bg-slate-800 text-sky-400 border border-sky-500/30 px-4 py-2.5 rounded-xl text-xs font-bold transition">
+                    <span>Abrir Mapa 3D en pantalla completa</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
             </div>
 
-            <!-- 2D Genially Map Container -->
-            <div id="map2dContainer" class="relative w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl h-[550px] sm:h-[650px]">
-                <iframe 
-                    src="https://view.genially.com/6a0644385d92f93d4080ff08" 
-                    title="Mapa Interactivo 2D - Patrimonios Comodoro Rivadavia" 
-                    class="w-full h-full border-0 rounded-2xl"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-
-            <!-- 3D Mapme Container -->
-            <div id="map3dContainer" class="hidden relative w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl h-[550px] sm:h-[650px]">
+            <!-- 3D Mapme Container (VISIBLE POR DEFECTO) -->
+            <div id="map3dContainer" class="relative w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl h-[550px] sm:h-[650px]">
                 <iframe 
                     src="https://viewer.mapme.com/mapa3d" 
                     title="Mapa Interactivo 3D - Patrimonios Comodoro Rivadavia" 
                     class="w-full h-full border-0 rounded-2xl"
                     allow="geolocation"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- 2D Genially Map Container (OCULTO HASTA HACER CLIC EN SU PESTAÑA) -->
+            <div id="map2dContainer" class="hidden relative w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl h-[550px] sm:h-[650px]">
+                <iframe 
+                    src="https://view.genially.com/6a0644385d92f93d4080ff08" 
+                    title="Mapa Interactivo 2D - Patrimonios Comodoro Rivadavia" 
+                    class="w-full h-full border-0 rounded-2xl"
                     allowfullscreen
                     loading="lazy">
                 </iframe>
@@ -320,9 +303,7 @@
                     </p>
                 </div>
 
-                <div id="officialWebLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Links populated by JS -->
-                </div>
+                <div id="officialWebLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </section>
 
@@ -352,7 +333,6 @@
                         </div>
                     </div>
 
-                    <!-- Badge Card -->
                     <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 border border-slate-800 text-center">
                         <div class="w-24 h-24 mx-auto bg-white rounded-full p-1 border border-slate-700 shadow-xl flex items-center justify-center mb-4">
                             <img src="imagenes/logo escuela.png" alt="Logo Escuela N° 796" class="w-full h-full rounded-full object-contain">
@@ -385,8 +365,6 @@
     <!-- CARPETA DE CAMPO MODAL -->
     <div id="bookModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-3 sm:p-6 overflow-y-auto">
         <div class="relative w-full max-w-5xl bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden flex flex-col max-h-[92vh]">
-            
-            <!-- Modal Header -->
             <div class="bg-gradient-to-r from-amber-950 via-slate-900 to-amber-950 text-amber-100 px-6 py-4 flex items-center justify-between border-b border-amber-900/40 shadow-md">
                 <div class="flex items-center space-x-3">
                     <div class="bg-amber-900/40 p-2 rounded-lg text-amber-300 border border-amber-700/40">
@@ -405,10 +383,7 @@
                 </button>
             </div>
 
-            <!-- Book Body -->
             <div class="flex-grow overflow-y-auto p-4 sm:p-8 book-page grid grid-cols-1 lg:grid-cols-12 gap-8 text-slate-300">
-                
-                <!-- Left Column: Field Logs & Entries -->
                 <div class="lg:col-span-7 space-y-6">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                         <h4 class="font-bold text-slate-100 text-lg font-serif flex items-center space-x-2">
@@ -416,26 +391,15 @@
                         </h4>
                         <span id="logCounterBadge" class="text-xs bg-amber-950 text-amber-300 border border-amber-800/60 font-bold px-2.5 py-0.5 rounded-full">38 Entradas</span>
                     </div>
-
-                    <!-- Entries List -->
-                    <div id="fieldLogsContainer" class="space-y-4">
-                        <!-- Dynamic Field Logs -->
-                    </div>
+                    <div id="fieldLogsContainer" class="space-y-4"></div>
                 </div>
 
-                <!-- Right Column: Gallery & Photo Progress -->
                 <div class="lg:col-span-5 space-y-6 lg:border-l lg:border-slate-800 lg:pl-6">
                     <div class="border-b border-slate-800 pb-3">
                         <h4 class="font-bold text-slate-100 text-lg font-serif">📷 Fotografías de Nuestros Progresos</h4>
                         <p class="text-xs text-slate-400">Registro visual de salidas de campo y talleres</p>
                     </div>
-
-                    <!-- Photo Gallery Grid -->
-                    <div class="grid grid-cols-2 gap-3" id="fieldPhotosGrid">
-                        <!-- Populated by JS -->
-                    </div>
-
-                    <!-- School Signature Box -->
+                    <div class="grid grid-cols-2 gap-3" id="fieldPhotosGrid"></div>
                     <div class="border border-dashed border-amber-900/50 bg-amber-950/20 rounded-xl p-4 text-center">
                         <div class="text-xs font-serif italic text-amber-200/90">
                             "Aprender reconociendo nuestras raíces e historia común."
@@ -445,10 +409,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Modal Footer -->
             <div class="bg-slate-950 px-6 py-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
                 <span>Cuaderno de Registro Escolar N° 796</span>
                 <button onclick="toggleBookModal()" class="bg-slate-800 text-slate-200 px-4 py-1.5 rounded-lg font-semibold hover:bg-slate-700 transition">
@@ -490,7 +452,6 @@
                     </div>
                 </div>
 
-                <!-- Field Progress Note associated -->
                 <div class="border-l-4 border-amber-600 bg-amber-950/30 p-4 rounded-r-xl border border-amber-900/40">
                     <h5 class="text-xs font-bold uppercase text-amber-400">Avance de Campo Escuela 796:</h5>
                     <p id="modalStudentNote" class="text-xs text-amber-200/90 mt-1 italic"></p>
@@ -513,7 +474,7 @@
     <div id="aiWidget" class="fixed bottom-5 right-5 z-50">
         <button id="aiToggleBtn" onclick="toggleChatWindow()" class="ai-pulse bg-gradient-to-r from-slate-900 via-patagonia-950 to-slate-900 text-white p-3.5 sm:p-4 rounded-full shadow-2xl border border-sky-500/40 flex items-center justify-center group transition-transform hover:scale-110">
             <div class="relative flex items-center justify-center">
-                <svg class="w-7 h-7 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-7 h-7 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <rect x="5" y="5" width="14" height="14" rx="2" stroke-width="2"/>
                     <path d="M9 2V5M15 2V5M9 19V22M15 19V22M2 9H5M2 15H5M19 9H22M19 15H22" stroke-width="2" stroke-linecap="round"/>
                 </svg>
@@ -528,10 +489,7 @@
             </span>
         </button>
 
-        <!-- Chat Overlay Window -->
         <div id="aiChatWindow" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-[380px] h-[520px] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden flex flex-col text-slate-200">
-            
-            <!-- Chat Header -->
             <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800">
                 <div class="flex items-center space-x-2.5">
                     <div class="relative bg-slate-800 p-2 rounded-xl border border-sky-500/30">
@@ -554,7 +512,6 @@
                 </button>
             </div>
 
-            <!-- Quick Question Chips -->
             <div class="bg-slate-950 px-3 py-2 border-b border-slate-800/80 overflow-x-auto flex space-x-2 text-[11px] whitespace-nowrap">
                 <button onclick="askQuickQuestion('¿Cuándo se fundó el Faro San Jorge y qué altura tiene?')" class="bg-slate-900 border border-slate-800 hover:border-sky-500 px-2.5 py-1 rounded-full text-slate-300 shadow-2xs">
                     💡 Faro San Jorge
@@ -567,7 +524,6 @@
                 </button>
             </div>
 
-            <!-- Chat Messages Log -->
             <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-3 bg-slate-950/60 text-xs">
                 <div class="flex items-start space-x-2">
                     <div class="w-7 h-7 rounded-lg bg-sky-950 border border-sky-800 text-sky-300 flex items-center justify-center shrink-0 text-[10px] font-bold">
@@ -579,7 +535,6 @@
                 </div>
             </div>
 
-            <!-- Input Box -->
             <div class="p-3 bg-slate-900 border-t border-slate-800">
                 <form id="chatForm" onsubmit="handleSendChat(event)" class="flex items-center space-x-2">
                     <input type="text" id="chatInput" placeholder="Haz una pregunta sobre el patrimonio..." required class="flex-grow text-xs p-2.5 rounded-xl border border-slate-700 bg-slate-950 text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500">
@@ -593,8 +548,6 @@
 
     <!-- Application Logic Javascript -->
     <script>
-        
-        // Official Data for Comodoro Rivadavia Cultural Heritage Sites
         const heritageData = [
             {
                 id: 'museo-patagonico',
@@ -689,7 +642,6 @@
             }
         ];
 
-        // Field Progress Logs stored for the "Carpeta de Campo"
         let fieldLogs = [
             {
                 id: 1,
@@ -959,31 +911,13 @@
             }
         ];
 
-        // Progress Photo Gallery Items
         const fieldPhotos = [
-            {
-                title: 'Museo Ferroportuario',
-                site: 'Complejo Ferroportuario',
-                url: 'museo ferroportuario.JPG'
-            },
-            {
-                title: 'Cerro Chenque',
-                site: 'Cerro Chenque',
-                url: 'Cerro Chenque.JPG'
-            },
-            {
-                title: 'Museo Regional',
-                site: 'Museo Regional',
-                url: 'image_5089b4.jpg'
-            },
-            {
-                title: 'Faro San Jorge',
-                site: 'Faro San Jorge',
-                url: 'faro san jorge.png'
-            }
+            { title: 'Museo Ferroportuario', site: 'Complejo Ferroportuario', url: 'museo ferroportuario.JPG' },
+            { title: 'Cerro Chenque', site: 'Cerro Chenque', url: 'Cerro Chenque.JPG' },
+            { title: 'Museo Regional', site: 'Museo Regional', url: 'image_5089b4.jpg' },
+            { title: 'Faro San Jorge', site: 'Faro San Jorge', url: 'faro san jorge.png' }
         ];
 
-        // Initialize App on DOM Load
         document.addEventListener('DOMContentLoaded', () => {
             renderHeritageCards();
             renderOfficialLinks();
@@ -991,7 +925,6 @@
             renderFieldPhotos();
         });
 
-        // Switch between 2D Genially Map and 3D Mapme
         function switchMapTab(tab) {
             const btn2d = document.getElementById('tab2dBtn');
             const btn3d = document.getElementById('tab3dBtn');
@@ -1011,7 +944,6 @@
             }
         }
 
-        // Render Cards for the Main Heritage Sites
         function renderHeritageCards() {
             const grid = document.getElementById('heritageGrid');
             grid.innerHTML = heritageData.map((item) => `
@@ -1049,7 +981,6 @@
             `).join('');
         }
 
-        // Render Official Link Directory Cards
         function renderOfficialLinks() {
             const container = document.getElementById('officialWebLinksGrid');
             container.innerHTML = heritageData.map(item => `
@@ -1072,11 +1003,9 @@
             `).join('');
         }
 
-        // Render Field Logs inside the Book Modal
         function renderFieldLogs() {
             const container = document.getElementById('fieldLogsContainer');
             const badge = document.getElementById('logCounterBadge');
-            
             if (badge) badge.textContent = `${fieldLogs.length} Entradas`;
 
             container.innerHTML = fieldLogs.map(log => `
@@ -1095,7 +1024,6 @@
             `).join('');
         }
 
-        // Render Field Photos Grid in Modal
         function renderFieldPhotos() {
             const container = document.getElementById('fieldPhotosGrid');
             container.innerHTML = fieldPhotos.map(photo => `
@@ -1109,13 +1037,10 @@
             `).join('');
         }
 
-        // Toggle Carpeta de Campo (Book) Modal
         function toggleBookModal() {
-            const modal = document.getElementById('bookModal');
-            modal.classList.toggle('hidden');
+            document.getElementById('bookModal').classList.toggle('hidden');
         }
 
-        // Open Individual Site Detail Modal
         function openDetailModal(siteId) {
             const site = heritageData.find(s => s.id === siteId);
             if (!site) return;
@@ -1136,19 +1061,15 @@
             document.getElementById('detailModal').classList.add('hidden');
         }
 
-        // Toggle AI Chat Window
         function toggleChatWindow() {
-            const chatWindow = document.getElementById('aiChatWindow');
-            chatWindow.classList.toggle('hidden');
+            document.getElementById('aiChatWindow').classList.toggle('hidden');
         }
 
-        // Quick Question Chip Trigger
         function askQuickQuestion(questionText) {
             document.getElementById('chatInput').value = questionText;
             handleSendChat(new Event('submit'));
         }
 
-        // Handle sending a message to the Gemini API Assistant
         async function handleSendChat(e) {
             e.preventDefault();
             const input = document.getElementById('chatInput');
@@ -1157,7 +1078,6 @@
 
             appendChatMessage('user', userText);
             input.value = '';
-
             const loadingId = appendChatMessage('bot', 'Pensando respuesta oficial...', true);
 
             try {
@@ -1165,7 +1085,6 @@
                 removeChatMessage(loadingId);
                 appendChatMessage('bot', responseText);
             } catch (err) {
-                console.error('Error fetching AI response:', err);
                 removeChatMessage(loadingId);
                 appendChatMessage('bot', 'El Museo Regional, Faro San Jorge, Cerro Chenque, Ferroportuario, Barrio Mosconi, Cine Teatro Español y Barrio Astra son los 7 patrimonios oficiales de Comodoro. ¿Deseas volver a consultar?');
             }
@@ -1206,7 +1125,7 @@
         }
 
         async function queryGeminiAPI(userQuery) {
-            const apiKey = ""; 
+            const apiKey = "";
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
             const systemPrompt = `
