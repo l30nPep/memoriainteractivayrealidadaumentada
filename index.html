@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -44,9 +43,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
-
-    <!-- Three.js CDN for 3D Map Visualizer -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Custom CSS Styles -->
     <style>
@@ -117,15 +113,12 @@
 
     <!-- Header with School Logo -->
     <header class="sticky top-0 z-40 w-full glass-card border-b border-slate-800/80 shadow-md">
-        <!-- Altura ajustada: h-16 para celular, h-20 para PC -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             
             <!-- Logo Escuela 796 Antonio Berni in Top Corner -->
             <div class="flex items-center space-x-2 sm:space-x-3">
                 <div class="relative group cursor-pointer" tabindex="0">
-                    <!-- Reducción de w/h para celular y uso de shrink-0 -->
                     <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 p-0.5 shadow-md flex items-center justify-center transition-transform group-hover:scale-105 border border-amber-500/40 shrink-0">
-                        <!-- Official Emblem Logo for Escuela 796 Antonio Berni -->
                        <img src="imagenes/logo escuela.png" alt="Logo Escuela N° 796" class="w-full h-full rounded-full object-contain">
                     </div>
 
@@ -197,7 +190,6 @@
 
                 <!-- Carpeta de Campo Button in Shape of a Book -->
                 <button id="openBookBtn" onclick="toggleBookModal()" class="btn-book flex items-center space-x-2 bg-gradient-to-r from-amber-900/90 via-amber-800 to-chenque-700 text-amber-100 px-4 py-2.5 rounded-xl shadow-lg shadow-amber-950/40 hover:shadow-amber-900/40 font-medium text-sm border border-amber-600/30">
-                    <!-- Simple Book Icon Badge -->
                     <div class="bg-amber-950/60 p-1.5 rounded-lg border border-amber-500/30 flex items-center justify-center">
                         <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -215,7 +207,6 @@
     <main class="flex-grow">
         <!-- Hero Section -->
         <section class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white py-16 sm:py-24 overflow-hidden border-b border-slate-800/60">
-            <!-- Background Decorative Grid -->
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:20px_20px]"></div>
             
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -229,7 +220,7 @@
                 </h2>
                 
                 <p class="mt-4 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                    nuestros patrimonios culturales e historicos <strong class="text-amber-400 font-semibold">Escuela N° 796 "Antonio Berni"</strong> con la información oficial de la Municipalidad de Comodoro Rivadavia y nuestra carpeta de avances de campo.
+                    Nuestros patrimonios culturales e históricos <strong class="text-amber-400 font-semibold">Escuela N° 796 "Antonio Berni"</strong> con la información oficial de la Municipalidad de Comodoro Rivadavia y nuestra carpeta de avances de campo.
                 </p>
 
                 <!-- Quick Stats / Highlights -->
@@ -272,7 +263,7 @@
             </div>
         </section>
 
-        <!-- Interactive Map Section (2D Genially & 3D Interactive Explorer) -->
+        <!-- Interactive Map Section (2D Genially & 3D Mapme) -->
         <section id="mapa" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/80">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
                 <div>
@@ -280,7 +271,7 @@
                     <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-100 mt-2">Mapa Interactivo 2D y 3D</h3>
                 </div>
                 <p class="text-slate-400 text-sm max-w-md mt-2 md:mt-0">
-                    Explora la ubicación geográfica de los 7 patrimonios históricos en el mapa 2D interactivo o navega la vista tridimensional del relieve costero de Comodoro Rivadavia.
+                    Explora la ubicación geográfica de los 7 patrimonios históricos en el mapa 2D interactivo o navega la vista tridimensional en Mapme.
                 </p>
             </div>
 
@@ -305,33 +296,16 @@
                 </iframe>
             </div>
 
-            <!-- 3D Interactive Terrain Canvas Container -->
+            <!-- 3D Mapme Container -->
             <div id="map3dContainer" class="hidden relative w-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl h-[550px] sm:h-[650px]">
-                <canvas id="threeMapCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
-                
-                <!-- 3D Map Overlay Controls & Legend -->
-                <div class="absolute top-4 left-4 z-10 bg-slate-900/90 backdrop-blur-md p-3.5 rounded-2xl border border-slate-800 text-xs max-w-xs shadow-xl">
-                    <div class="font-bold text-sky-400 flex items-center space-x-1.5 mb-1">
-                        <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
-                        <span>Comodoro Rivadavia 3D</span>
-                    </div>
-                    <p class="text-slate-300 text-[11px] leading-tight">
-                        Arrastra con el mouse/dedo para rotar el terreno 3D. Usa la rueda para hacer zoom. Haz clic en los pines luminosos para ver la ficha del patrimonio.
-                    </p>
-                </div>
-
-                <!-- Active 3D Pin Popup Info Box -->
-                <div id="map3dPopup" class="hidden absolute bottom-6 left-6 right-6 sm:left-auto sm:right-6 sm:w-80 z-10 bg-slate-900/95 backdrop-blur-md p-4 rounded-2xl border border-sky-500/40 shadow-2xl text-xs text-slate-200">
-                    <div class="flex items-start justify-between">
-                        <span id="popup3dCategory" class="text-[10px] uppercase font-bold text-sky-400 bg-sky-950 px-2 py-0.5 rounded-full border border-sky-800"></span>
-                        <button onclick="close3dPopup()" class="text-slate-400 hover:text-white text-base leading-none">&times;</button>
-                    </div>
-                    <h5 id="popup3dTitle" class="font-bold text-sm text-slate-100 mt-2"></h5>
-                    <p id="popup3dDesc" class="text-slate-300 text-[11px] mt-1 line-clamp-3"></p>
-                    <button id="popup3dBtn" class="mt-3 w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-1.5 rounded-xl text-xs transition">
-                        Ver Detalles Completos
-                    </button>
-                </div>
+                <iframe 
+                    src="https://viewer.mapme.com/mapa3d" 
+                    title="Mapa Interactivo 3D - Patrimonios Comodoro Rivadavia" 
+                    class="w-full h-full border-0 rounded-2xl"
+                    allow="geolocation"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
             </div>
         </section>
 
@@ -381,8 +355,7 @@
                     <!-- Badge Card -->
                     <div class="bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 border border-slate-800 text-center">
                         <div class="w-24 h-24 mx-auto bg-white rounded-full p-1 border border-slate-700 shadow-xl flex items-center justify-center mb-4">
-                            <!-- Official Emblem Logo SVG -->
-  <img src="imagenes/logo escuela.png" alt="Logo Escuela N° 796" class="w-full h-full rounded-full object-contain">
+                            <img src="imagenes/logo escuela.png" alt="Logo Escuela N° 796" class="w-full h-full rounded-full object-contain">
                         </div>
                         <h4 class="font-bold text-lg text-slate-100">Esc.N° 796 "Antonio Berni"</h4>
                         <p class="text-xs text-slate-400 mt-1">Comodoro Rivadavia, Chubut</p>
@@ -409,15 +382,14 @@
         </div>
     </footer>
 
-    <!-- CARPETA DE CAMPO MODAL (Simple Dark Book View) -->
+    <!-- CARPETA DE CAMPO MODAL -->
     <div id="bookModal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/85 backdrop-blur-md p-3 sm:p-6 overflow-y-auto">
         <div class="relative w-full max-w-5xl bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden flex flex-col max-h-[92vh]">
             
-            <!-- Modal Header (Dark Book Cover Style Bar) -->
+            <!-- Modal Header -->
             <div class="bg-gradient-to-r from-amber-950 via-slate-900 to-amber-950 text-amber-100 px-6 py-4 flex items-center justify-between border-b border-amber-900/40 shadow-md">
                 <div class="flex items-center space-x-3">
                     <div class="bg-amber-900/40 p-2 rounded-lg text-amber-300 border border-amber-700/40">
-                        <!-- Book Icon -->
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                         </svg>
@@ -433,7 +405,7 @@
                 </button>
             </div>
 
-            <!-- Book Body (Two Page Notebook Layout - Dark) -->
+            <!-- Book Body -->
             <div class="flex-grow overflow-y-auto p-4 sm:p-8 book-page grid grid-cols-1 lg:grid-cols-12 gap-8 text-slate-300">
                 
                 <!-- Left Column: Field Logs & Entries -->
@@ -442,7 +414,7 @@
                         <h4 class="font-bold text-slate-100 text-lg font-serif flex items-center space-x-2">
                             <span>📜 Bitácora de Avances de Investigación</span>
                         </h4>
-                        <span id="logCounterBadge" class="text-xs bg-amber-950 text-amber-300 border border-amber-800/60 font-bold px-2.5 py-0.5 rounded-full">3 Entradas</span>
+                        <span id="logCounterBadge" class="text-xs bg-amber-950 text-amber-300 border border-amber-800/60 font-bold px-2.5 py-0.5 rounded-full">38 Entradas</span>
                     </div>
 
                     <!-- Entries List -->
@@ -537,19 +509,14 @@
         </div>
     </div>
 
-    <!-- AI ASSISTANT WIDGET (Dark Theme Chip + Lupa Bubble) -->
+    <!-- AI ASSISTANT WIDGET -->
     <div id="aiWidget" class="fixed bottom-5 right-5 z-50">
-        
-        <!-- Toggle Bubble Button -->
         <button id="aiToggleBtn" onclick="toggleChatWindow()" class="ai-pulse bg-gradient-to-r from-slate-900 via-patagonia-950 to-slate-900 text-white p-3.5 sm:p-4 rounded-full shadow-2xl border border-sky-500/40 flex items-center justify-center group transition-transform hover:scale-110">
-            <!-- Logo: Chip + Lupa Icon -->
             <div class="relative flex items-center justify-center">
-                <!-- Microchip SVG Icon -->
                 <svg class="w-7 h-7 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <rect x="5" y="5" width="14" height="14" rx="2" stroke-width="2"/>
                     <path d="M9 2V5M15 2V5M9 19V22M15 19V22M2 9H5M2 15H5M19 9H22M19 15H22" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-                <!-- Magnifying Glass (Lupa) overlay on top of chip -->
                 <div class="absolute -bottom-1 -right-1 bg-amber-600 rounded-full p-1 border border-slate-950 text-slate-950 shadow-md">
                     <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -567,7 +534,6 @@
             <!-- Chat Header -->
             <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white px-4 py-3 flex items-center justify-between border-b border-slate-800">
                 <div class="flex items-center space-x-2.5">
-                    <!-- Chip + Lupa Icon Badge -->
                     <div class="relative bg-slate-800 p-2 rounded-xl border border-sky-500/30">
                         <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <rect x="5" y="5" width="14" height="14" rx="2" stroke-width="2"/>
@@ -603,7 +569,6 @@
 
             <!-- Chat Messages Log -->
             <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-3 bg-slate-950/60 text-xs">
-                <!-- Greeting message -->
                 <div class="flex items-start space-x-2">
                     <div class="w-7 h-7 rounded-lg bg-sky-950 border border-sky-800 text-sky-300 flex items-center justify-center shrink-0 text-[10px] font-bold">
                         🔍
@@ -685,7 +650,7 @@
             },
             {
                 id: 'museo-del-petroleo',
-                name: 'Museo del Petroleo (KM 3)',
+                name: 'Museo del Petróleo (KM 3)',
                 category: 'Cuna del Petróleo e Identidad',
                 shortDesc: 'Escenario del descubrimiento del petróleo en 1907 y cuna de YPF con emblemático patrimonio urbano.',
                 officialDesc: 'El Barrio General Mosconi (Km 3) es el corazón histórico petrolero. Allí se halla el Pozo N° 2 (descubrimiento del 13 de diciembre de 1907), el Museo Nacional del Petróleo, el Chalet Huergo, el Hospital Alvear y edificios icónicos de la ex YPF estatal creada bajo la visión del General Enrique Mosconi.',
@@ -696,31 +661,31 @@
                 studentNote: 'Entrevistamos a antiguos vecinos de YPF y documentamos la arquitectura de la ex Proveeduría y el Chalet Huergo.',
                 progressDate: '02 de Julio, 2026'
             },
-             {
+            {
                 id: 'Teatro-español',
                 name: 'Cine Teatro Español',
-                category: 'Patrimonio Historico y Cultural.',
-                shortDesc: 'espacio cultural histórico importante de la ciudad de Comodoro Rivadavia.',
-                officialDesc: 'Emblematico edificio inaugurado el 25 de mayo de 1934, proyectado por el arquitecto Luis Gazin y construido por Graziadio Trevisan. Sede cultural historico y Bien de interes historico Artistico nacional, referente de la arquitectura ecletica y renacentista española en la region.',
+                category: 'Patrimonio Histórico y Cultural',
+                shortDesc: 'Espacio cultural histórico importante de la ciudad de Comodoro Rivadavia.',
+                officialDesc: 'Emblemático edificio inaugurado el 25 de mayo de 1934, proyectado por el arquitecto Luis Gazin y construido por Graziadio Trevisan. Sede cultural histórica y Bien de Interés Histórico Artístico Nacional, referente de la arquitectura ecléctica y renacentista española en la región.',
                 location: 'San Martín 668/674, Comodoro Rivadavia, Chubut.',
-                status: 'lugar historico e importante.',
+                status: 'Bien de Interés Histórico Artístico Nacional',
                 officialUrl: 'https://comodoroturismo.gob.ar/lista/cine-teatro-espanol/',
                 image: 'https://i.pinimg.com/736x/9f/98/54/9f9854a47d26e5f1ab657c51eee9d3a5.jpg',
-                studentNote: 'Investigamos la historia arquitectonica del teatro, su inaguracion en 1914 y su valor historico cultural para la ciudad.',
+                studentNote: 'Investigamos la historia arquitectónica del teatro, su inauguración y su valor histórico cultural para la ciudad.',
                 progressDate: '06 de Agosto, 2026'
             },
-             {
+            {
                 id: 'barrio-astra',
                 name: 'Barrio Astra',
-                category: 'Patrimonio Cultural y Historico.',
-                shortDesc: 'Historico poblado petrolero ubicado al norte de la ciudad.',
-                officialDesc: 'Surgido comocampamento de la empresa Astra Argentina en 1912, este barrio conserva un rico patrimonio historico y arquitectonico construido con ladrillos calcareos caracteristicos, como la escuela N°  147, el cine astra, la usina y la ex estacion de ferrocarril.',
-                location: 'Ruta Nacional N° 3 (Km 20), Comodoro Rivadavia , Chubut.',
-                status: 'Patrimonio Historico y poblado Petrolero.',
+                category: 'Patrimonio Cultural e Histórico',
+                shortDesc: 'Histórico poblado petrolero ubicado al norte de la ciudad.',
+                officialDesc: 'Surgido como campamento de la empresa Astra Argentina en 1912, este barrio conserva un rico patrimonio histórico y arquitectónico construido con ladrillos calcáreos característicos, como la Escuela N° 147, el Cine Astra, la usina y la ex estación de ferrocarril.',
+                location: 'Ruta Nacional N° 3 (Km 20), Comodoro Rivadavia, Chubut.',
+                status: 'Patrimonio Histórico y Poblado Petrolero',
                 officialUrl: 'https://comodoroturismo.gob.ar/lista/astra/',
                 image: 'https://diariocronica-s3.cdn.net.ar/s3i233/2025/02/diariocronica/images/01/57/17/1571776_d63255120232262f87bdad26a85bf6b8be336fabd87358b66fd4f9c864eb81f3/lg.webp',
-                studentNote: 'Investigamos el origen del poblado petrolero de la empresa Astra, sus construcciones en piedra calcarea y sus edificios historicoa.',
-                progressDate: '03 de septiembre, 2026'
+                studentNote: 'Investigamos el origen del poblado petrolero de la empresa Astra, sus construcciones en piedra calcárea y sus edificios históricos.',
+                progressDate: '03 de Septiembre, 2026'
             }
         ];
 
@@ -886,113 +851,114 @@
                 author: '(Escuela. 796)',
                 date: 'Lara Oviedo',
                 text: 'El dia 29/06 estuvimos proyectando y haciendo el proyecto de la feria de ciencia. terminamos'
-             },
+            },
             {
                 id: 24,
                 patrimonio: '10 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro Sanchez',
                 text: 'Este dia empezamos fatal ya que no nos salia ninguna pero empezamos a retomar el ritmo aunque si pudimos corregir algunos errores que tuvimos.'
-             },
+            },
             {
                 id: 25,
                 patrimonio: '11 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro sanchez',
                 text: 'Hoy en dia empezamos arreglando todos los problemas, olvidamos algunas cosa, dandonos pequeños problemas.'
-             },
-             {
+            },
+            {
                 id: 26,
                 patrimonio: '16 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro sanchez',
                 text: 'Hoy reparamos varios problemas sin ningun tipo de consecuencia, y logramos acostumbrarnos.'
-             },
+            },
             {
                 id: 27,
                 patrimonio: '17 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro sanchez',
                 text: 'Hoy tuvimos fallos aunque no fueron dificiles de organizar y solucionar. pero aprendimos varias cosas nuevas y logramos implementarlas.'
-             },
+            },
             {
                 id: 28,
                 patrimonio: '18 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro sanchez',
                 text: 'Hoy fue un dia diferente, porque nos salio, casi todo pero solo tuvimos el error de confiarnos.'
-             },
+            },
             {
                 id: 29,
                 patrimonio: '19 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro sanchez',
                 text: 'Hoy logramos todo al punto que nos falta pulir algunos detalles y solucionar algunas cosas.'
-             },
+            },
             {
                 id: 30,
                 patrimonio: '20 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Ian Austin',
                 text: 'En el dia de hoy avanzamos con la pagina web del proyecto sobre los patrimonios de Comodoro Rivadavia, y tambien con el genialli, al final de la hora, lo terminamos un dia de mucha produccion.'
-             },
+            },
             {
                 id: 31,
                 patrimonio: '21 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Matias Villalba',
                 text: 'En el dia de hoy corregimos los videos y creamos los QR para cada video que fueron subido en youtube pusimos losmodelos en 3D naclado a su res´lectivo QR.'
-             },
+            },
             {
                 id: 32,
                 patrimonio: '24 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Maite Gonzales',
                 text: 'En el dia de la fecha, creamos afiches sobre las 4 fases, se hizo digital y despues lo pasamos a formato afiche, recortando y pegando papeles.'
-             },
+            },
             {
                 id: 33,
                 patrimonio: '24 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Ian Austin',
                 text: 'En el dia de hoy terminamos la pagina web completa, corregimos el video porque pesaba mucho para el host, tambien hicimos una portada para clickear y que llame la atencion.'
-             },
+            },
             {
                 id: 34,
                 patrimonio: '25 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Santiago Castro',
                 text: 'Estuve corrigiendo el video del cerro chenque y del museo del petroleo, tambien intentaba buscar y poner el sitio web dentro de un servidor gratuito.'
-             },
+            },
             {
                 id: 35,
                 patrimonio: '18 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Matias villalba',
                 text: 'En el dia hoy estaba bastante ancioso por el viaje tanto que no podia pegar el ojo, ya al otro dia fui al punto de encuentro Ceret en el KM3.'
-             },
+            },
             {
                 id: 36,
                 patrimonio: '27 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro Sanchez',
                 text: 'En el dia de hoy muy nerviso y solo pude dormir tres horas, luego de despertarme, me prepare y estudie toda la mañana y tarde aunque tuvimos problemas con el stand ya que la luz del sol molestaba al proyector, como tambien la pared era blanca, pero se soluciono aunque si lo pudimos mostrar bien a lo de realidad aumentada por el internet, pero lo mejor fue venir a exponer y mostrar nuestro trabajo que tomo mucho tiempo.'
-             },
+            },
             {
                 id: 37,
                 patrimonio: '28 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Matias Villalba',
                 text: 'Hoy es el ultimo dia, nos preparamos para el resultado de los evaluadores, nos dieron sus observasiones, como mejorar partes del stand y cosas como nuestra actitud, tambien aparte, entregaron los premios y salimos clasificados a la nacionales, pasamos a sacarnos fotos con los premios, fuimos con un docente a hacer unas actividades recreativas y despues comimos enpanadas y frutas, para luego prepararnospara ir devuelta a Comodoro.'
-             },
+            },
             {
                 id: 38,
                 patrimonio: '31 de agosto de 2026',
                 author: '(Escuela. 796)',
                 date: 'Lautaro Sanchez',
                 text: 'En el dia de hoy avanzamos con los QR y empezamos a diseñar una zona infantil (para tener en el stand de juegos), tambien a hacer llaveros personalizados y empezamos a mejorar la pagina web, tambien empezamos a diseñar diversos patrimonios, mejoramos el diseño de nuestro stand, agrandomos una nueva seccion y decoramos con diversas cosas (afiche, cartulina, letras grades del nombre del proyeco).'
-             }
+            }
         ];
+
         // Progress Photo Gallery Items
         const fieldPhotos = [
             {
@@ -1001,7 +967,7 @@
                 url: 'museo ferroportuario.JPG'
             },
             {
-                title: 'cerro Chenque',
+                title: 'Cerro Chenque',
                 site: 'Cerro Chenque',
                 url: 'Cerro Chenque.JPG'
             },
@@ -1017,7 +983,6 @@
             }
         ];
 
-        
         // Initialize App on DOM Load
         document.addEventListener('DOMContentLoaded', () => {
             renderHeritageCards();
@@ -1026,15 +991,7 @@
             renderFieldPhotos();
         });
 
-        let map3dInitialized = false;
-        let scene, camera, renderer, terrain, raycaster, mouse;
-        const pins3D = [];
-        let isDragging3D = false;
-        let previousMousePosition = { x: 0, y: 0 };
-        let targetRotationX = 0.5;
-        let targetRotationY = -0.6;
-        let targetDistance = 14;
-
+        // Switch between 2D Genially Map and 3D Mapme
         function switchMapTab(tab) {
             const btn2d = document.getElementById('tab2dBtn');
             const btn3d = document.getElementById('tab3dBtn');
@@ -1051,258 +1008,13 @@
                 btn2d.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition flex items-center space-x-2 text-slate-400 hover:text-white hover:bg-slate-800";
                 container3d.classList.remove('hidden');
                 container2d.classList.add('hidden');
-
-                if (!map3dInitialized) {
-                    init3DMap();
-                    map3dInitialized = true;
-                } else if (renderer && camera) {
-                    const canvas = document.getElementById('threeMapCanvas');
-                    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                    camera.updateProjectionMatrix();
-                }
             }
         }
 
-        // --- CARGA Y RENDERIZADO DEL MAPA 3D DESDE PROYECTO MAPS3D (.JSON) ---
-let map3dData = null;
-
-// Cargar el proyecto JSON de Maps3D
-fetch('./maps3d-project-2026-10-27_08-36-45.maps3d (2).json')
-    .then(res => res.json())
-    .then(json => {
-        map3dData = json;
-        console.log("Proyecto 3D cargado correctamente:", map3dData);
-    })
-    .catch(err => console.error("Error al cargar el proyecto 3D:", err));
-
-function init3DMap() {
-    const canvas = document.getElementById('threeMapCanvas');
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x070a12);
-    scene.fog = new THREE.FogExp2(0x070a12, 0.02);
-
-    camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-   
-    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Iluminación
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-    scene.add(ambientLight);
-
-    const dirLight = new THREE.DirectionalLight(0x38bdf8, 1.0);
-    dirLight.position.set(20, 40, 20);
-    scene.add(dirLight);
-
-    // Obtener parámetros del JSON
-    const params = map3dData ? map3dData.params : null;
-    const centerLng = params ? params.areaSelected.rectCenter[0] : -67.46728;
-    const centerLat = params ? params.areaSelected.rectCenter[1] : -45.83802;
-
-    // Crear Malla de Terreno Base (Representando el área seleccionada en el JSON)
-    const planeGeo = new THREE.PlaneGeometry(20, 20, 64, 64);
-   
-    // Deformación del terreno basada en la exageración de elevación del JSON (elevationExaggeration = 3)
-    const pos = planeGeo.attributes.position;
-    for (let i = 0; i < pos.count; i++) {
-        const x = pos.getX(i);
-        const y = pos.getY(i);
-        // Elevación simulada del Cerro Chenque en la zona centro/oeste del modelo
-        const distCenter = Math.sqrt(x * x + y * y);
-        let z = Math.sin(x * 0.3) * Math.cos(y * 0.3) * 0.4;
-        if (x < 1 && x > -5 && y < 3 && y > -3) {
-            z += Math.cos((x + 2) / 4 * Math.PI) * 1.5; // Relieve elevado del Chenque
-        }
-        pos.setZ(i, Math.max(-0.1, z));
-    }
-    planeGeo.computeVertexNormals();
-
-    const terrainMat = new THREE.MeshStandardMaterial({
-        color: params ? params.groundColor : 0x1e293b,
-        roughness: 0.7,
-        metalness: 0.1,
-        flatShading: true
-    });
-
-    terrain = new THREE.Mesh(planeGeo, terrainMat);
-    terrain.rotation.x = -Math.PI / 2;
-    scene.add(terrain);
-
-    // Malla de Cuadrícula / Grid activada según el JSON (gridOverlay.visible = true)
-    const gridMat = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.15
-    });
-    const gridMesh = new THREE.Mesh(planeGeo, gridMat);
-    gridMesh.rotation.x = -Math.PI / 2;
-    gridMesh.position.y = 0.02;
-    scene.add(gridMesh);
-
-    // Conversor de Coordenadas Geográficas (Lat/Lng) a Plano 3D
-    function latLngTo3D(lat, lng) {
-        const scale = 80; // Escala de conversión
-        const x = (lng - centerLng) * scale;
-        const z = -(lat - centerLat) * scale;
-        return { x, z };
-    }
-
-    // Renderizar Pines y Marcadores 3D directamente desde el JSON
-    const markers = params && params.markers3d ? params.markers3d.items : [];
-
-    markers.forEach(marker => {
-        const [lng, lat] = marker.coordinates;
-        const coords3D = latLngTo3D(lat, lng);
-
-        const pinGroup = new THREE.Group();
-        pinGroup.position.set(coords3D.x, 1.2, coords3D.z);
-
-        // Color del marcador desde el JSON (#E53935)
-        const markerColor = marker.color ? parseInt(marker.color.replace('#', '0x')) : 0xe53935;
-
-        // Pin 3D (Cono)
-        const coneGeo = new THREE.ConeGeometry(0.35, 0.9, 8);
-        coneGeo.rotateX(Math.PI);
-        const coneMat = new THREE.MeshStandardMaterial({
-            color: markerColor,
-            emissive: markerColor,
-            emissiveIntensity: 0.5,
-            roughness: 0.2
-        });
-        const cone = new THREE.Mesh(coneGeo, coneMat);
-        cone.position.y = 0.4;
-        pinGroup.add(cone);
-
-        // Esfera superior
-        const sphereGeo = new THREE.SphereGeometry(0.2, 16, 16);
-        const sphereMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-        const sphere = new THREE.Mesh(sphereGeo, sphereMat);
-        sphere.position.y = 0.9;
-        pinGroup.add(sphere);
-
-        // Haz luminoso vertical
-        const beamGeo = new THREE.CylinderGeometry(0.03, 0.03, 3, 8);
-        const beamMat = new THREE.MeshBasicMaterial({
-            color: markerColor,
-            transparent: true,
-            opacity: 0.4
-        });
-        const beam = new THREE.Mesh(beamGeo, beamMat);
-        beam.position.y = 1.5;
-        pinGroup.add(beam);
-
-        // Vincular los datos del marcador al objeto 3D
-        pinGroup.userData = {
-            id: marker.id,
-            name: marker.label.trim(),
-            category: "Patrimonio Comodoro Rivadavia",
-            shortDesc: `Ubicación geográfica real: Lat ${lat.toFixed(4)}, Lng ${lng.toFixed(4)}.`,
-            coordinates: [lng, lat]
-        };
-
-        scene.add(pinGroup);
-        pins3D.push(pinGroup);
-    });
-
-    // Eventos de interacción (Mouse / Zoom / Click)
-    raycaster = new THREE.Raycaster();
-    mouse = new THREE.Vector2();
-
-    canvas.addEventListener('mousedown', (e) => {
-        isDragging3D = true;
-        previousMousePosition = { x: e.clientX, y: e.clientY };
-    });
-
-    canvas.addEventListener('mousemove', (e) => {
-        if (isDragging3D) {
-            const deltaX = e.clientX - previousMousePosition.x;
-            const deltaY = e.clientY - previousMousePosition.y;
-
-            targetRotationY += deltaX * 0.008;
-            targetRotationX += deltaY * 0.008;
-            targetRotationX = Math.max(0.1, Math.min(Math.PI / 2.2, targetRotationX));
-
-            previousMousePosition = { x: e.clientX, y: e.clientY };
-        }
-    });
-
-    window.addEventListener('mouseup', () => { isDragging3D = false; });
-
-    canvas.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        targetDistance += e.deltaY * 0.01;
-        targetDistance = Math.max(5, Math.min(30, targetDistance));
-    }, { passive: false });
-
-    canvas.addEventListener('click', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = ((e.clientX - rect.left) / canvas.clientWidth) * 2 - 1;
-        mouse.y = -((e.clientY - rect.top) / canvas.clientHeight) * 2 + 1;
-
-        raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(scene.children, true);
-
-        for (let i = 0; i < intersects.length; i++) {
-            let obj = intersects[i].object;
-            while (obj.parent && obj.parent !== scene) {
-                obj = obj.parent;
-            }
-            if (obj.userData && obj.userData.name) {
-                show3dPopup(obj.userData);
-                break;
-            }
-        }
-    });
-
-    animate3DMap();
-}
-
-        function animate3DMap() {
-            requestAnimationFrame(animate3DMap);
-
-            const x = targetDistance * Math.sin(targetRotationY) * Math.cos(targetRotationX);
-            const y = targetDistance * Math.sin(targetRotationX);
-            const z = targetDistance * Math.cos(targetRotationY) * Math.cos(targetRotationX);
-
-            camera.position.set(x, y, z);
-            camera.lookAt(0, 0, 0);
-
-            const time = Date.now() * 0.003;
-            pins3D.forEach((pin, idx) => {
-                pin.position.y = 1.2 + Math.sin(time + idx) * 0.15;
-                pin.rotation.y += 0.015;
-            });
-
-            renderer.render(scene, camera);
-        }
-
-        function show3dPopup(data) {
-            document.getElementById('popup3dCategory').textContent = data.category;
-            document.getElementById('popup3dTitle').textContent = data.name;
-            document.getElementById('popup3dDesc').textContent = data.shortDesc;
-            
-            const btn = document.getElementById('popup3dBtn');
-            btn.onclick = () => {
-                openDetailModal(data.id);
-            };
-
-            document.getElementById('map3dPopup').classList.remove('hidden');
-        }
-
-        function close3dPopup() {
-            document.getElementById('map3dPopup').classList.add('hidden');
-        }
-
-        // Render Cards for the 5 Main Heritage Sites
+        // Render Cards for the Main Heritage Sites
         function renderHeritageCards() {
             const grid = document.getElementById('heritageGrid');
-            grid.innerHTML = heritageData.map((item, idx) => `
+            grid.innerHTML = heritageData.map((item) => `
                 <div class="bg-slate-900/90 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-800 hover:border-slate-700 flex flex-col group backdrop-blur-sm">
                     <div class="relative h-48 overflow-hidden bg-slate-950">
                         <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90 group-hover:opacity-100">
@@ -1397,28 +1109,6 @@ function init3DMap() {
             `).join('');
         }
 
-        // Handle submission of a new progress note to the Carpeta de Campo
-        function handleAddLog(e) {
-            e.preventDefault();
-            const patrimonio = document.getElementById('logPatrimonioSelect').value;
-            const author = document.getElementById('logAuthorInput').value;
-            const text = document.getElementById('logTextInput').value;
-
-            const newLog = {
-                id: Date.now(),
-                patrimonio: patrimonio,
-                author: author,
-                date: new Date().toLocaleDateString('es-AR', { day: '2-digit', month: 'short', year: 'numeric' }),
-                text: text
-            };
-
-            fieldLogs.unshift(newLog);
-            renderFieldLogs();
-
-            // Reset form
-            document.getElementById('addLogForm').reset();
-        }
-
         // Toggle Carpeta de Campo (Book) Modal
         function toggleBookModal() {
             const modal = document.getElementById('bookModal');
@@ -1465,13 +1155,9 @@ function init3DMap() {
             const userText = input.value.trim();
             if (!userText) return;
 
-            const chatMessages = document.getElementById('chatMessages');
-
-            // Append User Message
             appendChatMessage('user', userText);
             input.value = '';
 
-            // Show Thinking Indicator
             const loadingId = appendChatMessage('bot', 'Pensando respuesta oficial...', true);
 
             try {
@@ -1481,11 +1167,10 @@ function init3DMap() {
             } catch (err) {
                 console.error('Error fetching AI response:', err);
                 removeChatMessage(loadingId);
-                appendChatMessage('bot', 'El Museo Regional, Faro San Jorge, Cerro Chenque, Ferroportuario y Barrio Mosconi son los 5 patrimonios oficiales de Comodoro. ¿Deseas volver a consultar?');
+                appendChatMessage('bot', 'El Museo Regional, Faro San Jorge, Cerro Chenque, Ferroportuario, Barrio Mosconi, Cine Teatro Español y Barrio Astra son los 7 patrimonios oficiales de Comodoro. ¿Deseas volver a consultar?');
             }
         }
 
-        // Append Chat Bubble to Chat Window
         function appendChatMessage(sender, text, isLoading = false) {
             const chatMessages = document.getElementById('chatMessages');
             const msgId = 'msg-' + Date.now();
@@ -1520,21 +1205,22 @@ function init3DMap() {
             if (el) el.remove();
         }
 
-        // Call Gemini 3 Flash API with context of Comodoro Rivadavia Cultural Heritage
         async function queryGeminiAPI(userQuery) {
-            const apiKey = ""; // API key automatically handled by environment runtime if present
+            const apiKey = ""; 
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
             const systemPrompt = `
                 Eres "Chip-Investigador", un asistente de inteligencia artificial amigable, conciso y fácil de entender de la Escuela N° 796 "Antonio Berni" de Comodoro Rivadavia, Chubut.
-                Tu objetivo es responder preguntas sobre los 5 patrimonios culturales de Comodoro Rivadavia:
+                Tu objetivo es responder preguntas sobre los 7 patrimonios culturales de Comodoro Rivadavia:
                 1. Museo Regional Patagónico "Prof. Antonio Garcés" (paleontología, arqueología, ciencias naturales).
                 2. Faro San Jorge (inaugurado en 1925, 27 metros de altura, patrimonio histórico).
                 3. Cerro Chenque (meseta emblemática de 212m, fósiles marinos y vista costera).
                 4. Complejo Ferroportuario / Museo Teodoro Nürnberg (ex estación de tren, plazoleta San Martín, historia ferroviaria).
                 5. Barrio General Mosconi / KM 3 (cuna de YPF, Pozo N°2, Chalet Huergo, Museo Nacional del Petróleo).
+                6. Cine Teatro Español (inaugurado en 1934, arquitectura ecléctica y renacentista española).
+                7. Barrio Astra (campamento petrolero de 1912, construcciones de ladrillos calcáreos).
 
-                Responde siempre en español claro, ameno y educativo. Sé breves (máximo 2 párrafos cortos).
+                Responde siempre en español claro, ameno y educativo. Sé breve (máximo 2 párrafos cortos).
             `;
 
             const payload = {
@@ -1542,7 +1228,6 @@ function init3DMap() {
                 systemInstruction: { parts: [{ text: systemPrompt }] }
             };
 
-            // Implement Exponential Backoff Fetch
             let delay = 1000;
             for (let attempt = 0; attempt < 3; attempt++) {
                 try {
