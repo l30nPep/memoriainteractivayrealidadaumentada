@@ -302,11 +302,11 @@
                     <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-slate-900 px-3 py-1 rounded-full border border-emerald-900/60">Gamificación</span>
                     <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-100 mt-2">Zona Juegos</h3>
                     <p class="text-slate-400 text-sm mt-2">
-                        Accede de forma directa a los juegos de los distintos lugares y patrimonnios historicos de Comodoro Rivadavia.
+                        Accede de forma directa a los juegos de los distintos lugares y patrimonios históricos de Comodoro Rivadavia.
                     </p>
                 </div>
 
-                <div id="officialWebLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                <div id="juegosGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </section>
         
@@ -321,7 +321,7 @@
                     </p>
                 </div>
 
-                <div id="officialWebLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                <div id="oficialesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </section>
 
@@ -1033,6 +1033,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderHeritageCards();
+            renderJuegos();
             renderOfficialLinks();
             renderFieldLogs();
             renderFieldPhotos();
@@ -1094,8 +1095,30 @@
             `).join('');
         }
 
+        function renderJuegos() {
+            const container = document.getElementById('juegosGrid');
+            container.innerHTML = juegos.map(item => `
+                <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-sm hover:border-sky-700/60 transition">
+                    <div class="flex items-start justify-between">
+                        <div class="w-10 h-10 rounded-xl bg-sky-950/80 border border-sky-800/50 text-sky-400 flex items-center justify-center font-bold text-base">
+                            🎮
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded-full border border-sky-800/50">
+                            Minijuego
+                        </span>
+                    </div>
+                    <h5 class="font-bold text-slate-200 text-sm mt-3">${item.name}</h5>
+                    <p class="text-xs text-slate-400 mt-1 line-clamp-2">Pon a prueba tu conocimiento sobre este patrimonio.</p>
+                    <a href="#" class="mt-4 inline-flex items-center space-x-1 text-xs font-bold text-sky-400 hover:text-sky-300">
+                        <span>Jugar ahora</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            `).join('');
+        }
+
         function renderOfficialLinks() {
-            const container = document.getElementById('officialWebLinksGrid');
+            const container = document.getElementById('oficialesGrid');
             container.innerHTML = heritageData.map(item => `
                 <div class="bg-slate-900/90 p-5 rounded-2xl border border-slate-800 shadow-sm hover:border-emerald-700/60 transition">
                     <div class="flex items-start justify-between">
