@@ -566,6 +566,101 @@
 
     <!-- Application Logic Javascript -->
     <script>
+
+        const juegos = [
+            {
+                id: 'museo-patagonico',
+                name: 'Museo Regional Patagónico "Prof. Antonio Garcés"',
+                category: 'Paleontología y Arqueología',
+                shortDesc: 'Primer museo de la ciudad dedicado a las ciencias naturales, la paleontología y las culturas originarias de la Patagonia.',
+                officialDesc: 'Fundado el 28 de junio de 1948, el Museo Regional Patagónico Profesor Antonio Garcés resguarda colecciones únicas de paleontología, arqueología, ciencias naturales y elementos de las culturas originarias. Emplazado en el icónico bulevar de Av. Rivadavia y Chacabuco, conserva la distintiva arquitectura de su edificio histórico.',
+                location: 'Av. Rivadavia & Chacabuco, Comodoro Rivadavia',
+                status: 'Bien de Interés Histórico Municipal',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/museo-regional-patagonico-profesor-antonio-garces/',
+                image: 'https://comodoroturismo.gob.ar/wp-content/uploads/2025/09/01-v2.png',
+                studentNote: 'En nuestra visita analizamos piezas fósiles locales e identificamos la riqueza geológica que rodea a nuestra cuenca.',
+                progressDate: '05 de Abril, 2026'
+            },
+            {
+                id: 'faro-san-jorge',
+                name: 'Faro San Jorge',
+                category: 'Patrimonio Histórico Marítimo',
+                shortDesc: 'Ícono del Golfo San Jorge con 27 metros de altura, inaugurado en 1925 en un entorno natural único.',
+                officialDesc: 'Librado al servicio el 9 de marzo de 1925, el Faro San Jorge tiene una torre de 27 metros de altura hecha de ladrillos calcáreos y alcanza una elevación de 78 metros sobre el nivel del mar. Declarado Patrimonio Histórico de Comodoro Rivadavia el 18 de agosto de 2005, es un símbolo centenario de guía para navegantes.',
+                location: 'Ruta Provincial 1, a 17 km al norte del centro',
+                status: 'Patrimonio Histórico (Ordenanza Municipal)',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/faro-san-jorge/',
+                image: 'https://comodoroturismo.gob.ar/wp-content/uploads/2019/07/faro-sanjorge-5.png',
+                studentNote: 'Registramos la presencia de aves marinas junto al farallón y medimos el impacto del viento costero en las estructuras.',
+                progressDate: '12 de Mayo, 2026'
+            },
+            {
+                id: 'cerro-chenque',
+                name: 'Cerro Chenque',
+                category: 'Patrimonio Natural y Geológico',
+                shortDesc: 'Majestuosa meseta costera de 212 metros que domina el paisaje de la ciudad y su historia.',
+                officialDesc: 'El Cerro Chenque es el rasgo geomorfológico más representativo de Comodoro Rivadavia. Con sus 212 metros de altura sobre el nivel del mar, constituye una formación estratigráfica patagónica que resguarda fósiles marinos antiguos y ofrece una vista panorámica excepcional de la costa y el centro urbano.',
+                location: 'Frente al litoral marino central de la ciudad',
+                status: 'Reserva Geológica y Emblema Natural',
+                officialUrl: 'https://comodoroturismo.gob.ar',
+                image: 'https://www.rigel.com.ar/v2/wp-content/uploads/2022/03/Estabilizacion-Cerro-Chenque-DJI_0068-1-1536x971.jpg',
+                studentNote: 'Tomamos muestras fotográficas de las capas sedimentarias y estudiamos los planes de estabilización urbana.',
+                progressDate: '28 de Mayo, 2026'
+            },
+            {
+                id: 'ferro-portuaria',
+                name: 'Complejo Ferroportuario (Museo Teodoro Nürnberg)',
+                category: 'Patrimonio Ferroviario e Industrial',
+                shortDesc: 'Antigua estación de ferrocarril y circuito portuario, testigo del origen del transporte patagónico.',
+                officialDesc: 'Declarado Bien Histórico Nacional (Ley Nº 24.798) y patrimonio local, este complejo abarca la antigua estación de tren de 1912, la plazoleta San Martín, la plaza Soberanía, los antiguos galpones y la ex Usina (CEPTur). Resguarda locomotoras, herramientas y material documental del antiguo Ferrocarril a Sarmiento.',
+                location: 'Av. Rivadavia y 9 de Julio, Centro',
+                status: 'Bien Histórico Nacional y Patrimonio Municipal',
+                officialUrl: 'https://cultura.vivamoscomodoro.gob.ar',
+                image: 'https://cultura.vivamoscomodoro.gob.ar/images/2025/11/16/museo-ferroportuario.jpg',
+                studentNote: 'Recorrimos el vagón histórico y la vieja torre de agua para digitalizar datos de la época ferroviaria.',
+                progressDate: '10 de Junio, 2026'
+            },
+            {
+                id: 'museo-del-petroleo',
+                name: 'Museo del Petróleo (KM 3)',
+                category: 'Cuna del Petróleo e Identidad',
+                shortDesc: 'Escenario del descubrimiento del petróleo en 1907 y cuna de YPF con emblemático patrimonio urbano.',
+                officialDesc: 'El Barrio General Mosconi (Km 3) es el corazón histórico petrolero. Allí se halla el Pozo N° 2 (descubrimiento del 13 de diciembre de 1907), el Museo Nacional del Petróleo, el Chalet Huergo, el Hospital Alvear y edificios icónicos de la ex YPF estatal creada bajo la visión del General Enrique Mosconi.',
+                location: 'Barrio General Mosconi (Km 3), Comodoro Rivadavia',
+                status: 'Conjunto Histórico y Cuna Industrial Nacional',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/km3-general-mosconi/',
+                image: 'https://media.elpatagonico.com/p/62c18777338e61aa1eeab223fa9ee6a9/adjuntos/193/imagenes/008/503/0008503326/contratapa.jpg',
+                studentNote: 'Entrevistamos a antiguos vecinos de YPF y documentamos la arquitectura de la ex Proveeduría y el Chalet Huergo.',
+                progressDate: '02 de Julio, 2026'
+            },
+            {
+                id: 'Teatro-español',
+                name: 'Cine Teatro Español',
+                category: 'Patrimonio Histórico y Cultural',
+                shortDesc: 'Espacio cultural histórico importante de la ciudad de Comodoro Rivadavia.',
+                officialDesc: 'Emblemático edificio inaugurado el 25 de mayo de 1934, proyectado por el arquitecto Luis Gazin y construido por Graziadio Trevisan. Sede cultural histórica y Bien de Interés Histórico Artístico Nacional, referente de la arquitectura ecléctica y renacentista española en la región.',
+                location: 'San Martín 668/674, Comodoro Rivadavia, Chubut.',
+                status: 'Bien de Interés Histórico Artístico Nacional',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/cine-teatro-espanol/',
+                image: 'https://i.pinimg.com/736x/9f/98/54/9f9854a47d26e5f1ab657c51eee9d3a5.jpg',
+                studentNote: 'Investigamos la historia arquitectónica del teatro, su inauguración y su valor histórico cultural para la ciudad.',
+                progressDate: '06 de Agosto, 2026'
+            },
+            {
+                id: 'barrio-astra',
+                name: 'Barrio Astra',
+                category: 'Patrimonio Cultural e Histórico',
+                shortDesc: 'Histórico poblado petrolero ubicado al norte de la ciudad.',
+                officialDesc: 'Surgido como campamento de la empresa Astra Argentina en 1912, este barrio conserva un rico patrimonio histórico y arquitectónico construido con ladrillos calcáreos característicos, como la Escuela N° 147, el Cine Astra, la usina y la ex estación de ferrocarril.',
+                location: 'Ruta Nacional N° 3 (Km 20), Comodoro Rivadavia, Chubut.',
+                status: 'Patrimonio Histórico y Poblado Petrolero',
+                officialUrl: 'https://comodoroturismo.gob.ar/lista/astra/',
+                image: 'https://diariocronica-s3.cdn.net.ar/s3i233/2025/02/diariocronica/images/01/57/17/1571776_d63255120232262f87bdad26a85bf6b8be336fabd87358b66fd4f9c864eb81f3/lg.webp',
+                studentNote: 'Investigamos el origen del poblado petrolero de la empresa Astra, sus construcciones en piedra calcárea y sus edificios históricos.',
+                progressDate: '03 de Septiembre, 2026'
+            }
+        ];
+        
         const heritageData = [
             {
                 id: 'museo-patagonico',
