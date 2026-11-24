@@ -423,6 +423,38 @@
                         <p class="text-xs text-slate-400">Registro visual de salidas de campo y talleres</p>
                     </div>
                     <div class="grid grid-cols-2 gap-3" id="fieldPhotosGrid"></div>
+                    
+                    <!-- ZONA DE VIDEOS AÑADIDA -->
+                    <div class="space-y-4 mt-8 pt-4 border-t border-slate-800">
+                        <div class="pb-1">
+                            <h4 class="font-bold text-slate-100 text-lg font-serif flex items-center space-x-2">
+                                <span>🎥 Registros Audiovisuales</span>
+                            </h4>
+                            <p class="text-xs text-slate-400">Documentación de campo y exposición en feria</p>
+                        </div>
+                        
+                        <div class="relative rounded-xl overflow-hidden border border-amber-600/40 bg-slate-950 shadow-lg group">
+                            <video controls class="w-full aspect-video object-cover">
+                                <source src="videos/tu-video-principal.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="relative rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-md">
+                                <video controls class="w-full aspect-video object-cover">
+                                    <source src="videos/tu-video-2.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="relative rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-md">
+                                <video controls class="w-full aspect-video object-cover">
+                                    <source src="videos/tu-video-3.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN DE ZONA DE VIDEOS -->
+
                     <div class="border border-dashed border-amber-900/50 bg-amber-950/20 rounded-xl p-4 text-center">
                         <div class="text-xs font-serif italic text-amber-200/90">
                             "Aprender reconociendo nuestras raíces e historia común."
@@ -1058,7 +1090,6 @@
             `).join('');
         }
 
-        // FUNCION ACTUALIZADA PARA MOSTRAR LOS JUEGOS Y CONTROLAR LOS VACIOS
         function renderJuegos() {
             const container = document.getElementById('juegosGrid');
             container.innerHTML = juegos.map(item => `
